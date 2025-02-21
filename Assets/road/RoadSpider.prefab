@@ -8,13 +8,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4648131931653836455, guid: d11e42150b9d16c41880eb48a98c45b6, type: 3}
+      propertyPath: _speed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7136927211165502885, guid: d11e42150b9d16c41880eb48a98c45b6, type: 3}
       propertyPath: m_Name
-      value: RoadEmpty (3) Variant
+      value: RoadSpider
       objectReference: {fileID: 0}
     - target: {fileID: 7512186494780872479, guid: d11e42150b9d16c41880eb48a98c45b6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1.27
       objectReference: {fileID: 0}
     - target: {fileID: 7512186494780872479, guid: d11e42150b9d16c41880eb48a98c45b6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -22,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7512186494780872479, guid: d11e42150b9d16c41880eb48a98c45b6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -30
+      value: -25.88
       objectReference: {fileID: 0}
     - target: {fileID: 7512186494780872479, guid: d11e42150b9d16c41880eb48a98c45b6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -79,7 +83,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9240deb2d0a70974f91e07607dd29692, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9240deb2d0a70974f91e07607dd29692, type: 3}
       propertyPath: m_LocalPosition.z

@@ -22,15 +22,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 09ceddf34bc5499428ef6a551947eb57, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 09ceddf34bc5499428ef6a551947eb57, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.888
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 09ceddf34bc5499428ef6a551947eb57, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.34
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 09ceddf34bc5499428ef6a551947eb57, type: 3}
       propertyPath: m_LocalRotation.w
@@ -62,7 +62,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 09ceddf34bc5499428ef6a551947eb57, type: 3}
       propertyPath: m_Name
-      value: monk@T-Pose
+      value: monkWithColider
       objectReference: {fileID: 0}
     - target: {fileID: 2106145266610383287, guid: 09ceddf34bc5499428ef6a551947eb57, type: 3}
       propertyPath: m_Mesh
@@ -87,6 +87,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 09ceddf34bc5499428ef6a551947eb57, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8751031900792241025}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 09ceddf34bc5499428ef6a551947eb57, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3449728282094466188}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 09ceddf34bc5499428ef6a551947eb57, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3162412568380841135}
     - targetCorrespondingSourceObject: {fileID: 1082271958561512970, guid: 09ceddf34bc5499428ef6a551947eb57, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8184439475960440779}
@@ -121,8 +127,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.02412482, y: 0.038198426, z: 0.009345593}
-  m_Center: {x: -4.429375e-11, y: 0.0060222372, z: -0.0010229119}
+  m_Size: {x: 0.013610233, y: 0.038198426, z: 0.009345593}
+  m_Center: {x: -4.428535e-11, y: 0.0060222372, z: -0.0010229119}
 --- !u!54 &8134295724999533214
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -200,6 +206,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1c869a69ef4a254686359846c69a7df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!143 &3449728282094466188
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1650280902190982711}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 0.05
+  m_Radius: 0.01
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.01
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0.02, z: 0}
+--- !u!114 &3162412568380841135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1650280902190982711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0056fc7f253009c4ab48f39fd9e38014, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _roadSpawner: {fileID: 0}
 --- !u!4 &5908014473348275225 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5465940246521907071, guid: 09ceddf34bc5499428ef6a551947eb57, type: 3}

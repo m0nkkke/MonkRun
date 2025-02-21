@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Stone
   - Spider
+  - Road
   layers:
   - Default
   - TransparentFX

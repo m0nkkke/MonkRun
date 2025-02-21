@@ -24,7 +24,7 @@ public class Road : MonoBehaviour
     }
     private void DestroyRoad()
     {
-        if (transform.position.x < -5f)
+        if (transform.position.x < -15f)
         {
             Destroy(gameObject);
         }
