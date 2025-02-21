@@ -287,11 +287,47 @@ PrefabInstance:
       propertyPath: m_Name
       value: RoadSpider
       objectReference: {fileID: 0}
+    - target: {fileID: 8887879661872778049, guid: 0e4c62a0cb739d440a4871309631d0c7, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6942557237985880724, guid: 0e4c62a0cb739d440a4871309631d0c7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4278422769099600636}
   m_SourcePrefab: {fileID: 100100000, guid: 0e4c62a0cb739d440a4871309631d0c7, type: 3}
+--- !u!1 &760125138242642366 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6942557237985880724, guid: 0e4c62a0cb739d440a4871309631d0c7, type: 3}
+  m_PrefabInstance: {fileID: 7697895102038608682}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4278422769099600636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 760125138242642366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b0cc5a498bda724290ffa05bded2b60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1447013159541996172}
+  rend: {fileID: 1264523829030649963}
+--- !u!23 &1264523829030649963 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8887879661872778049, guid: 0e4c62a0cb739d440a4871309631d0c7, type: 3}
+  m_PrefabInstance: {fileID: 7697895102038608682}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1447013159541996172 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9133502363790471590, guid: 0e4c62a0cb739d440a4871309631d0c7, type: 3}
+  m_PrefabInstance: {fileID: 7697895102038608682}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4012622083272892048 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6736215475713562042, guid: 0e4c62a0cb739d440a4871309631d0c7, type: 3}
