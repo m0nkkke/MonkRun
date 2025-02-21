@@ -12,11 +12,5 @@ public class Player : MonoBehaviour
     {
         print("ПРошел");
         _roadSpawner.Spawn();
-        //foreach (var riverSpawner in _riverSpawners)
-        //{
-        //    riverSpawner.Spawn();
-        //}
-        //_mountainSpawner.Spawn();
-
     }
 }

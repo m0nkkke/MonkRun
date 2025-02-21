@@ -9,29 +9,64 @@ public class MonkeyController : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+        PlayAnimation("Running");
     }
 
     void Update()
     {
-        // Прыжок по пробелу
-        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
-
-        // Прыжок по пробелу
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (!stateInfo.IsName("Jump") && !stateInfo.IsName("Slide"))
-            {
-                animator.SetTrigger("Jump");
-            }
+            PlayAnimation("Jump");
         }
-
-        // Слайд по ПКМ
-        if (Input.GetMouseButtonDown(1)) // 1 - это правая кнопка мыши
+        else if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            if (!stateInfo.IsName("Jump") && !stateInfo.IsName("Slide"))
+            PlayAnimation("Slide");
+        }
+        else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Jump") ||
+                 animator.GetCurrentAnimatorStateInfo(0).IsName("Slide"))
+        {
+            // Возвращаемся в Run после завершения анимации
+            if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
             {
-                animator.SetTrigger("Slide");
+                PlayAnimation("Running");
             }
         }
     }
+
+    void PlayAnimation(string animationName)
+    {
+        animator.Play(animationName, 0, 0);
+    }
+
+
+    //void Start()
+    //{
+    //    animator = GetComponent<Animator>();
+    //}
+
+    //void Update()
+    //{
+    //    // Прыжок по пробелу
+    //    AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+
+    //    // Прыжок по пробелу
+    //    if (Input.GetKeyDown(KeyCode.Space))
+    //    {
+    //        if (!stateInfo.IsName("Jump") && !stateInfo.IsName("Slide"))
+    //        {
+    //            animator.ResetTrigger("Slide");
+    //            animator.SetTrigger("Jump");
+    //        }
+    //    }
+
+    //    // Слайд по ПКМ
+    //    if (Input.GetMouseButtonDown(1)) // 1 - это правая кнопка мыши
+    //    {
+    //        if (!stateInfo.IsName("Jump") && !stateInfo.IsName("Slide"))
+    //        {
+    //            animator.ResetTrigger("Jump");
+    //            animator.SetTrigger("Slide");
+    //        }
+    //    }
+    //}
 }
