@@ -163,16 +163,52 @@ PrefabInstance:
       propertyPath: m_Name
       value: RoadSpider
       objectReference: {fileID: 0}
+    - target: {fileID: 8887879661872778049, guid: 0e4c62a0cb739d440a4871309631d0c7, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6942557237985880724, guid: 0e4c62a0cb739d440a4871309631d0c7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1437555091906233500}
   m_SourcePrefab: {fileID: 100100000, guid: 0e4c62a0cb739d440a4871309631d0c7, type: 3}
 --- !u!4 &125088731215188735 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6736215475713562042, guid: 0e4c62a0cb739d440a4871309631d0c7, type: 3}
   m_PrefabInstance: {fileID: 6685523006650386245}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &2451937055722370787 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9133502363790471590, guid: 0e4c62a0cb739d440a4871309631d0c7, type: 3}
+  m_PrefabInstance: {fileID: 6685523006650386245}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &2855186191253343236 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8887879661872778049, guid: 0e4c62a0cb739d440a4871309631d0c7, type: 3}
+  m_PrefabInstance: {fileID: 6685523006650386245}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4368303375636114897 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6942557237985880724, guid: 0e4c62a0cb739d440a4871309631d0c7, type: 3}
+  m_PrefabInstance: {fileID: 6685523006650386245}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1437555091906233500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4368303375636114897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b0cc5a498bda724290ffa05bded2b60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 2451937055722370787}
+  rend: {fileID: 2855186191253343236}
 --- !u!1001 &7032388241992567195
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -183,7 +219,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2719395481432319401, guid: fcc7ce18a91189a47b07474a6277d0cc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: 2719395481432319401, guid: fcc7ce18a91189a47b07474a6277d0cc, type: 3}
       propertyPath: m_LocalPosition.y
