@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Road : MonoBehaviour
 {
-    [SerializeField] private float _speed = 5;
+    //[SerializeField] private float _speed = 5;
 
     private void Update()
     {
@@ -19,7 +19,7 @@ public class Road : MonoBehaviour
 
     private void Move()
     {
-        transform.Translate(-transform.right * _speed * Time.fixedDeltaTime);
+        transform.Translate(-transform.right * GameManager.Instance.roadSpeed * Time.fixedDeltaTime);
 
     }
     private void DestroyRoad()
