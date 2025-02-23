@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5383266878194663614}
   m_Layer: 0
   m_Name: PitTrigger
-  m_TagString: Untagged
+  m_TagString: River
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

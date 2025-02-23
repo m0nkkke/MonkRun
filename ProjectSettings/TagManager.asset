@@ -7,6 +7,7 @@ TagManager:
   - Stone
   - Spider
   - Road
+  - River
   layers:
   - Default
   - TransparentFX
