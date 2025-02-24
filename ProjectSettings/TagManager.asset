@@ -8,6 +8,7 @@ TagManager:
   - Spider
   - Road
   - River
+  - RockCollider
   layers:
   - Default
   - TransparentFX

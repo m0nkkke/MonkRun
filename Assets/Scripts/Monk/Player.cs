@@ -10,7 +10,11 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        print("ПРошел");
-        _roadSpawner.Spawn();
+        if (other.gameObject.name == "Trigger")
+        {
+            print("ПРошел");
+            _roadSpawner.Spawn();
+            GameManager.Instance.Score += 1;
+        }
     }
 }
