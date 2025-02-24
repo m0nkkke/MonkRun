@@ -84,6 +84,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: rock
       objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: a9175a7d1437318438079316c45bf6bf, type: 3}
+      propertyPath: m_TagString
+      value: RockCollider
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
