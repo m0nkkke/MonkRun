@@ -9,6 +9,7 @@ TagManager:
   - Road
   - River
   - RockCollider
+  - Fly
   layers:
   - Default
   - TransparentFX
