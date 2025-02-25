@@ -17,6 +17,11 @@ public class CollisionScript : MonoBehaviour
             print("Spider");
             GameManager.Instance.Score = 0;
         }
+        else if (collision.gameObject.tag == "Fly")
+        {
+            print("Fly");
+            GameManager.Instance.Score = 0;
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -29,6 +34,17 @@ public class CollisionScript : MonoBehaviour
         {
             print("River");
             GameManager.Instance.Score = 0;
+        }
+    }
+    private void Update()
+    {
+        if (GameManager.Instance.Score > 10)
+        {
+            GameManager.Instance.roadSpeed = 10;
+        }
+        else if (GameManager.Instance.Score < 10 && GameManager.Instance.roadSpeed == 10)
+        {
+            GameManager.Instance.roadSpeed = 8;
         }
     }
 }
