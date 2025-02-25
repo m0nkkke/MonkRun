@@ -8,13 +8,13 @@ public class CollisionChecker : MonoBehaviour
     {
         //print(collision.gameObject.CompareTag);
         // Проверяем, с чем столкнулись
-        if (collision.gameObject.CompareTag("Stone"))
-        {
-            Debug.Log("Столкновение с камнем!");
-        }
-        else if (collision.gameObject.CompareTag("Spider"))
-        {
-            Debug.Log("Столкновение с пауком!");
-        }
+        //if (collision.gameObject.CompareTag("Stone"))
+        //{
+        //    Debug.Log("Столкновение с камнем!");
+        //}
+        //else if (collision.gameObject.CompareTag("Spider"))
+        //{
+        //    Debug.Log("Столкновение с пауком!");
+        //}
     }
 }
