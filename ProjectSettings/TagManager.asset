@@ -10,6 +10,9 @@ TagManager:
   - River
   - RockCollider
   - Fly
+  - BackMonk
+  - LegMonk
+  - HeadMonk
   layers:
   - Default
   - TransparentFX
