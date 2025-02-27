@@ -9,12 +9,12 @@ public class CollisionLegScript : MonoBehaviour
         if (other.gameObject.name == "PitTrigger")
         {
             print("Pit");
-            GameManager.Instance.Score = 0;
+            GameManager.Instance.ResetGame();
         }
         else if (other.gameObject.name == "RiverTrigger")
         {
             print("River");
-            GameManager.Instance.Score = 0;
+            GameManager.Instance.ResetGame();
         }
     }
 }
