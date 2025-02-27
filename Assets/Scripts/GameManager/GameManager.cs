@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     public int roadSpeed = 8;
     public int Score = 0;
+    public int Bananas = 0;
 
     private void Awake()
     {
