@@ -11,21 +11,16 @@ public class CollisionScript : MonoBehaviour
             print("Rock");
             GameManager.Instance.Score = 0;
         }
-
     }
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.gameObject.name == "PitTrigger")
-    //    {
-    //        print("Pit");
-    //        GameManager.Instance.Score = 0;
-    //    }
-    //    else if (other.gameObject.name == "RiverTrigger")
-    //    {
-    //        print("River");
-    //        GameManager.Instance.Score = 0;
-    //    }
-    //}
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Banana")
+        {
+            GameManager.Instance.Bananas += 1;
+            Destroy(other.gameObject);
+        }
+    }
     private void Update()
     {
         if (GameManager.Instance.Score > 10)

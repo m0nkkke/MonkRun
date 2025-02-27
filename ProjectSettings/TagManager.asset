@@ -13,6 +13,7 @@ TagManager:
   - BackMonk
   - LegMonk
   - HeadMonk
+  - Banana
   layers:
   - Default
   - TransparentFX
