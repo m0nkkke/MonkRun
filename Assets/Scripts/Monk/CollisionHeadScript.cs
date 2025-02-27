@@ -10,12 +10,12 @@ public class CollisionHeadScript : MonoBehaviour
         if (collision.gameObject.tag == "Spider")
         {
             print("Spider");
-            GameManager.Instance.Score = 0;
+            GameManager.Instance.ResetGame();
         }
         else if (collision.gameObject.tag == "Fly")
         {
             print("Fly");
-            GameManager.Instance.Score = 0;
+            GameManager.Instance.ResetGame();
         }
     }
 }

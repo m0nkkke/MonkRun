@@ -9,7 +9,7 @@ public class CollisionScript : MonoBehaviour
         if (collision.gameObject.tag == "RockCollider")
         {
             print("Rock");
-            GameManager.Instance.Score = 0;
+            GameManager.Instance.ResetGame();
         }
     }
 
