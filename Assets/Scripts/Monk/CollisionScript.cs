@@ -4,12 +4,21 @@ using UnityEngine;
 
 public class CollisionScript : SoundsScript
 {
+    private Animator animator;
+    private void Start()
+    {
+        animator = GetComponentInParent<Animator>();
+
+    }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "RockCollider")
         {
             print("Rock");
             PlaySound(sounds[1]);
+            collision.collider.enabled = false;
+            GameManager.Instance.roadSpeed = 0;
+            animator.Play("Hit On Legs", -1, 0f);
             GameManager.Instance.ResetGame();
         }
     }

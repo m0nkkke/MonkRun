@@ -15,23 +15,26 @@ public class MonkeyController : SoundsScript
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if ( GameManager.Instance.isRunning)
         {
-            PlayAnimation("Jump");
-            PlaySound(sounds[0], volume: 0.2f);
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            PlayAnimation("Slide");
-            PlaySound(sounds[1], volume: 0.2f);
-        }
-        else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Jump") ||
-                 animator.GetCurrentAnimatorStateInfo(0).IsName("Slide"))
-        {
-            // ¬озвращаемс€ в Run после завершени€ анимации
-            if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                PlayAnimation("Running");
+                PlayAnimation("Jump");
+                PlaySound(sounds[0], volume: 0.2f);
+            }
+            else if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                PlayAnimation("Slide");
+                PlaySound(sounds[1], volume: 0.2f);
+            }
+            else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Jump") ||
+                     animator.GetCurrentAnimatorStateInfo(0).IsName("Slide"))
+            {
+                // ¬озвращаемс€ в Run после завершени€ анимации
+                if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+                {
+                    PlayAnimation("Running");
+                }
             }
         }
     }

@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public int roadSpeed = 8;
     public int Score = 0;
     public int Bananas = 0;
+    public bool isRunning = true;
 
     private readonly string filename = "result.json";
 
@@ -36,6 +37,7 @@ public class GameManager : MonoBehaviour
         SaveResult();
         Instance.Score = 0;
         Instance.Bananas = 0;
+        isRunning = false;
     }
 
     public void SaveResult()
