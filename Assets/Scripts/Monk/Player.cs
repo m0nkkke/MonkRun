@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.name == "Trigger")
         {
-            print("ПРошел");
+            //print("ПРошел");
             _roadSpawner.Spawn();
             GameManager.Instance.Score += 1;
         }
