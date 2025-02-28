@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollisionScript : MonoBehaviour
+public class CollisionScript : SoundsScript
 {
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "RockCollider")
         {
             print("Rock");
+            PlaySound(sounds[1]);
             GameManager.Instance.ResetGame();
         }
     }
@@ -18,6 +19,7 @@ public class CollisionScript : MonoBehaviour
         if (other.gameObject.tag == "Banana")
         {
             GameManager.Instance.Bananas += 1;
+            PlaySound(sounds[0], volume: 0.2f);
             Destroy(other.gameObject);
         }
     }
