@@ -10,7 +10,7 @@ public class MonkeyController : SoundsScript
     {
         animator = GetComponent<Animator>();
         PlayAnimation("Running");
-        PlaySound(sounds[2]);
+        PlaySound(sounds[2], volume: 0.7f);
     }
 
     void Update()

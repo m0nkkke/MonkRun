@@ -1252,7 +1252,7 @@ PrefabInstance:
     - target: {fileID: 8751031900792241025, guid: 1b5b8168a065de84cbf2c69b7694ed43, type: 3}
       propertyPath: sounds.Array.data[2]
       value: 
-      objectReference: {fileID: 8300000, guid: 0fdb2d36496eb704bb98a8a67a4e4d1a, type: 3}
+      objectReference: {fileID: 8300000, guid: 268b40f3402802d448931720e60ace2c, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

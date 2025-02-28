@@ -10,7 +10,7 @@ public class SoundsScript : MonoBehaviour
 
     public void PlaySound(AudioClip clip, float volume = 1f, bool destroyed = false, float p1 = 0.85f, float p2 = 1.2f)
     {
-        audioSrc.pitch = Random;
+        audioSrc.pitch = p1;
         audioSrc.PlayOneShot(clip, volume);
     }
 
