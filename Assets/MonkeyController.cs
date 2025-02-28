@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MonkeyController : MonoBehaviour
+public class MonkeyController : SoundsScript
 {
     private Animator animator;
     private int jumpStateHash = Animator.StringToHash("Base Layer.Jump");
@@ -10,6 +10,7 @@ public class MonkeyController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         PlayAnimation("Running");
+        PlaySound(sounds[2]);
     }
 
     void Update()
@@ -17,10 +18,12 @@ public class MonkeyController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             PlayAnimation("Jump");
+            PlaySound(sounds[0], volume: 0.2f);
         }
         else if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             PlayAnimation("Slide");
+            PlaySound(sounds[1], volume: 0.2f);
         }
         else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Jump") ||
                  animator.GetCurrentAnimatorStateInfo(0).IsName("Slide"))
