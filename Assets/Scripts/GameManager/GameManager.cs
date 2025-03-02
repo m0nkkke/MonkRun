@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class GameData
@@ -32,9 +33,21 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    private void Update()
+    {
+        //if (isRunning)
+        //{
+        //    roadSpeed = roadSpeed + Score / (roadSpeed * 3);
+        //}
+
+    }
     public void ResetGame()
     {
-        SaveResult();
+        try
+        {
+            SaveResult();
+        }
+        catch { }
         Instance.Score = 0;
         Instance.Bananas = 0;
         isRunning = false;
@@ -72,5 +85,18 @@ public class GameManager : MonoBehaviour
         string updatedJson = JsonUtility.ToJson(data, true);
         File.WriteAllText(filename, updatedJson);
     }
+
+    [ContextMenu("Restart")]
+    public void Restart()
+    {
+        // Получаем индекс текущей сцены
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+        // Перезагружаем текущую сцену
+        SceneManager.LoadScene(currentSceneIndex);
+        roadSpeed = 8;
+        isRunning = true;
+    }
+
 
 }
