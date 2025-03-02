@@ -11,6 +11,9 @@ public class MonkeyController : SoundsScript
         animator = GetComponent<Animator>();
         PlayAnimation("Running");
         PlaySound(sounds[2], volume: 0.7f);
+
+        SwipeDetection.ClearAllSubscribers();
+        SwipeDetection.SwipeEvent += SwipeControl;
     }
 
     void Update()
@@ -19,13 +22,11 @@ public class MonkeyController : SoundsScript
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                PlayAnimation("Jump");
-                PlaySound(sounds[0], volume: 0.2f);
+                ToJump();
             }
             else if (Input.GetKeyDown(KeyCode.LeftShift))
             {
-                PlayAnimation("Slide");
-                PlaySound(sounds[1], volume: 0.2f);
+                ToSlide();
             }
             else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Jump") ||
                      animator.GetCurrentAnimatorStateInfo(0).IsName("Slide"))
@@ -39,10 +40,39 @@ public class MonkeyController : SoundsScript
         }
     }
 
-    void PlayAnimation(string animationName)
+    private void PlayAnimation(string animationName)
     {
         animator.Play(animationName, 0, 0);
     }
+
+    private void ToJump()
+    {
+        PlayAnimation("Jump");
+        PlaySound(sounds[0], volume: 0.2f);
+    }
+
+    private void ToSlide()
+    {
+        PlayAnimation("Slide");
+        PlaySound(sounds[1], volume: 0.2f);
+    }
+
+    private void SwipeControl(Vector2 e)
+    {
+        if (GameManager.Instance.isRunning) 
+        {
+            if (e.y > 0) ToJump();
+            else if (e.y < 0) ToSlide();
+        }
+        else if (e.x > 0)
+        {
+            GameManager.Instance.Restart();
+        }
+    }
+
+
+
+
 
 
     //void Start()
