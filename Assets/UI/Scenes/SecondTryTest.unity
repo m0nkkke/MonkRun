@@ -142,7 +142,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &151701320
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2087,42 +2087,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f8e020455cde1849aafcb3884995434, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roads:
-  - {fileID: 7021638123345662855, guid: f788d47ead1262743928f17cf3bd4a4c, type: 3}
-  - {fileID: 8430956483960655572, guid: 2fc75f7ec051ed34d8d7665c78e7b5e2, type: 3}
-  - {fileID: 3901667135720935263, guid: 6430c1013e1468446a9ce7c87b58127d, type: 3}
-  - {fileID: 6000627508223643686, guid: 086aba63285a66e44865e1c5b60d3cba, type: 3}
-  - {fileID: 8161299120413535569, guid: fa5a112f42ec0574facbbd8d78bb8469, type: 3}
-  - {fileID: 2000882818152658095, guid: 6ee74aabc9eb05c4a920ee759003fa0c, type: 3}
-  - {fileID: 1090245740126708986, guid: 9c2c401eced32154cb10f2ee5f22282e, type: 3}
-  - {fileID: 6936818799035509039, guid: 699386e714996fa48862c768bac696ee, type: 3}
-  - {fileID: 8302147713361287333, guid: c3c6f2b520809a6459ba5c91cac95ad1, type: 3}
-  - {fileID: 2635629525235754639, guid: e43fe36284f24114788927d3299546ae, type: 3}
-  - {fileID: 1096836798015281919, guid: b5a6a384222f2ea4288e3f75c54f2b0c, type: 3}
-  - {fileID: 8381210666947055987, guid: 45d76ef9d42730242a86b8ca3c8ed378, type: 3}
-  - {fileID: 3630893421256939728, guid: 693ca6a5961da2e40b902733f85f5f06, type: 3}
-  - {fileID: 4603111558873315589, guid: f0567bab003ffb14cbe8e594a0d608f6, type: 3}
-  - {fileID: 8996736628928157269, guid: bfbafd2cbae3425478310e77442f30c4, type: 3}
-  - {fileID: 3451682576352992013, guid: c357561497aa73640976847aecd71467, type: 3}
-  - {fileID: 1377519328419803387, guid: 9896dcd52e2a8094f929713191e8ac59, type: 3}
-  - {fileID: 4205115003239604915, guid: 60adf89262cd5ea48a7f20123c9659e6, type: 3}
-  - {fileID: 5088676773123037658, guid: 52ad66183efa79242a2cb0989ff9ead5, type: 3}
-  - {fileID: 2742477725000353971, guid: d35efc9aff3796443b79cc62ac788802, type: 3}
-  - {fileID: 2153928549840030973, guid: 5bc4b5abba026534aaa0f4b6590ab939, type: 3}
-  - {fileID: 6386632197131815066, guid: 20a20b75455dda147b3409d4d58fb1a5, type: 3}
-  - {fileID: 2046104290415503130, guid: f164f729d5665ad45a6e5c9cae5a356e, type: 3}
-  - {fileID: 4436178678471197788, guid: 1f5008696a4d2a84a84e9e78484c2c3c, type: 3}
-  - {fileID: 3507140219004248225, guid: 5f2c874d11197b74c8ce98189c6205b5, type: 3}
-  - {fileID: 4202779314437361565, guid: 121f2506417725945b99af82dce39e26, type: 3}
-  - {fileID: 3394265883258130019, guid: 6d9e8461256a5e646914d27d4084e862, type: 3}
-  - {fileID: 5096222675059572890, guid: 54e78c0f9f1131745aeb64860bc72168, type: 3}
-  - {fileID: 8750936440798485393, guid: d0626e23f043a714a8cc44657a968956, type: 3}
-  - {fileID: 1161147425611762652, guid: 780a509289599bf409e0b526c5b57468, type: 3}
-  - {fileID: 7363583760658345309, guid: 2777692855789d341ab310667398f1fc, type: 3}
-  - {fileID: 8670251438093830951, guid: a560d3ef96fb93e4c84dbba6a1c394d0, type: 3}
-  - {fileID: 6719273378601419498, guid: bfc2a73590f33b1448daf0d3aa6b3420, type: 3}
-  - {fileID: 6871839691026940950, guid: 6ae2306345f97824c9ce8d7db9b961c7, type: 3}
   roadLen: 7
+  EmptyRoads: []
+  RockRoads: []
+  BananaRoads: []
+  FlyRoads: []
+  SpiderRoads: []
+  RiverRoads: []
+  PitRoads: []
 --- !u!1001 &1801496375
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2277,6 +2249,7 @@ MonoBehaviour:
   Score: 0
   Bananas: 0
   isRunning: 1
+  CountMaxBananas: 0
 --- !u!1 &2028656925 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1650280902190982711, guid: 1b5b8168a065de84cbf2c69b7694ed43, type: 3}

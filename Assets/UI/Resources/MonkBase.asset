@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64e98999a78285f4aa540e523e6fab8d, type: 3}
   m_Name: MonkBase
   m_EditorClassIdentifier: 
-  <Model>k__BackingField: {fileID: 919132149155446097, guid: 7655b47c93476084aae0b08570bfdecd, type: 3}
+  <Model>k__BackingField: {fileID: 1650280902190982711, guid: 1b5b8168a065de84cbf2c69b7694ed43, type: 3}
   <Image>k__BackingField: {fileID: 21300000, guid: 3d65ff12fff0a6448bb736e346023011, type: 3}
   <Price>k__BackingField: 2000
   <SkinType>k__BackingField: 0
