@@ -106,7 +106,18 @@ public class GameManager : MonoBehaviour
     {
         // Максимум скорость увеличится на 2 за 
         int stepSpeedIncrease = 1;
-        roadSpeed = roadSpeed + stepSpeedIncrease + Bananas / CountMaxBananas;
+        roadSpeed = roadSpeed + stepSpeedIncrease;
+        // + Bananas / CountMaxBananas
+    }
+
+    public readonly List<int> StepsSpeedIncrease = new List<int>() { 20, 50, 100, 200, 400, 900, 1300, 1700};
+    public void IncreaseScore()
+    {
+        Score += 1;
+        if (StepsSpeedIncrease.Contains(Score))
+        {
+            UpdateSpeed();
+        }
     }
 
 

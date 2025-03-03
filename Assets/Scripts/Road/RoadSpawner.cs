@@ -19,7 +19,9 @@ public class RoadSpawner : MonoBehaviour
     [SerializeField] private List<GameObject> PitRoads;
 
     private GameObject road;
-    
+
+    private List<int> posEmptySpawnTrigger;
+    private int countEmptySpawns = 0;
 
     private void Start() 
     {
@@ -31,12 +33,22 @@ public class RoadSpawner : MonoBehaviour
             .Concat(PitRoads)
             .ToList();
         road = Instantiate(roads[Random.Range(0, roads.Count)], transform.position, Quaternion.identity);
+        //posEmptySpawnTrigger = GameManager.Instance.StepsSpeedIncrease.Select(x => (x - 10)).ToList();
     }
 
     public void Spawn()
     {
-        int score = (GameManager.Instance.Score / 10) % 10;
-        if (score == 4) SpawnEmpty();
+        //int score = (GameManager.Instance.Score / 10) % 10;
+        //int score = (GameManager.Instance.Score / 10) % 2;
+        int score = GameManager.Instance.Score;
+
+        //if (score == 1) SpawnEmpty();
+        if (GameManager.Instance.StepsSpeedIncrease[countEmptySpawns] - score <= 10)
+        {
+            SpawnEmpty();
+            if (countEmptySpawns < GameManager.Instance.StepsSpeedIncrease.Count - 1 && GameManager.Instance.StepsSpeedIncrease.Contains(score + 1))
+                countEmptySpawns += 1;
+        }
         else SpawnRoad(roads);
     }
     private void SpawnEmpty()
