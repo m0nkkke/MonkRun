@@ -6,10 +6,20 @@ using UnityEngine.UIElements;
 
 public class ShopPanel : MonoBehaviour
 {
+    public event Action<ShopItemView> ItemViewClicked;
     private List<ShopItemView> _shopItems = new List<ShopItemView>();
 
     [SerializeField] private Transform _itemsParent;
     [SerializeField] private ShopItemViewFactory _shopItemViewFactory;
+
+    private OpenSkinsChecker _openSkinsChecker;
+    private SelectedSkinChecker _selectedSkinChecker;
+
+    public void Initialize(OpenSkinsChecker openSkinsChecker, SelectedSkinChecker selectedSkinChecker)
+    {
+        _openSkinsChecker = openSkinsChecker;
+        _selectedSkinChecker = selectedSkinChecker;
+    }
 
     public void Show(IEnumerable<ShopItem> items)
     {
@@ -23,13 +33,41 @@ public class ShopPanel : MonoBehaviour
             spawnedItem.Unselect();
             spawnedItem.UnHighlight();
 
+            _openSkinsChecker.Visit(spawnedItem.Item);
+            if (_openSkinsChecker.IsOpened)
+            {
+                _selectedSkinChecker.Visit(spawnedItem.Item);
+
+                if (_selectedSkinChecker.IsSelected)
+                {
+                    spawnedItem.Select();
+                    spawnedItem.Highlight();
+                    ItemViewClicked?.Invoke(spawnedItem);
+                }
+                spawnedItem.UnLock();
+            }
+            else
+            {
+                spawnedItem.Lock();
+            }
+
+
             _shopItems.Add(spawnedItem);
         }
     }
 
-    private void OnItemViewClick(ShopItemView obj)
+    private void OnItemViewClick(ShopItemView itemView)
     {
-        throw new NotImplementedException();
+        Highlight(itemView);
+        ItemViewClicked?.Invoke(itemView);
+    }
+
+    private void Highlight(ShopItemView shopItemView)
+    {
+        foreach (var item in _shopItems)
+            item.UnHighlight();
+        
+        shopItemView.Highlight();
     }
 
     private void Clear()
