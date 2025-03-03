@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
         {
             //print("ПРошел");
             _roadSpawner.Spawn();
-            GameManager.Instance.Score += 1;
+            GameManager.Instance.IncreaseScore();
         }
     }
 }

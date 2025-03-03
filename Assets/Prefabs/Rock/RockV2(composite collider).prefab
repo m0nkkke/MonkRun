@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6571515510629439416}
   m_Layer: 0
-  m_Name: RockV2
+  m_Name: RockV2(composite collider)
   m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -94,15 +94,18 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8164078558771037576, guid: a9175a7d1437318438079316c45bf6bf, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1909118577535555571}
+      addedObject: {fileID: 5971856592339557172}
+    - targetCorrespondingSourceObject: {fileID: 8164078558771037576, guid: a9175a7d1437318438079316c45bf6bf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7045623869678465343}
   m_SourcePrefab: {fileID: 100100000, guid: a9175a7d1437318438079316c45bf6bf, type: 3}
 --- !u!1 &2599007430933918112 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8164078558771037576, guid: a9175a7d1437318438079316c45bf6bf, type: 3}
   m_PrefabInstance: {fileID: 6151113677300102184}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &1909118577535555571
-MeshCollider:
+--- !u!65 &5971856592339557172
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -119,10 +122,30 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -2432090755550338912, guid: a9175a7d1437318438079316c45bf6bf, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 0.9, y: 1.2, z: 1.6999999}
+  m_Center: {x: -5.35, y: 1, z: 1.05}
+--- !u!65 &7045623869678465343
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2599007430933918112}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.5, y: 0.7, z: 1.6999999}
+  m_Center: {x: -4.65, y: 0.75, z: 1.05}
 --- !u!4 &5969411568897201091 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a9175a7d1437318438079316c45bf6bf, type: 3}
