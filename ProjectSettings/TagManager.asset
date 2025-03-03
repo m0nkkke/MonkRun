@@ -14,6 +14,7 @@ TagManager:
   - LegMonk
   - HeadMonk
   - Banana
+  - BananaRoad
   layers:
   - Default
   - TransparentFX

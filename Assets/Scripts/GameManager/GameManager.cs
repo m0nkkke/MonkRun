@@ -19,7 +19,10 @@ public class GameManager : MonoBehaviour
     public int Bananas = 0;
     public bool isRunning = true;
 
+    public int CountMaxBananas = 0;
+
     private readonly string filename = "result.json";
+    private readonly int START_SPEED = 8;
 
     private void Awake()
     {
@@ -51,6 +54,7 @@ public class GameManager : MonoBehaviour
         Instance.Score = 0;
         Instance.Bananas = 0;
         isRunning = false;
+
     }
 
     public void SaveResult()
@@ -63,7 +67,6 @@ public class GameManager : MonoBehaviour
             // Если файл существует, считываем данные из него
             string json = File.ReadAllText(filename);
             data = JsonUtility.FromJson<GameData>(json);
-            print(data);
         }
         else
         {
@@ -94,8 +97,27 @@ public class GameManager : MonoBehaviour
 
         // Перезагружаем текущую сцену
         SceneManager.LoadScene(currentSceneIndex);
-        roadSpeed = 8;
+        roadSpeed = START_SPEED;
+        CountMaxBananas = 0;
         isRunning = true;
+    }
+
+    public void UpdateSpeed()
+    {
+        // Максимум скорость увеличится на 2 за 
+        int stepSpeedIncrease = 1;
+        roadSpeed = roadSpeed + stepSpeedIncrease;
+        // + Bananas / CountMaxBananas
+    }
+
+    public readonly List<int> StepsSpeedIncrease = new List<int>() { 20, 50, 100, 200, 400, 900, 1300, 1700};
+    public void IncreaseScore()
+    {
+        Score += 1;
+        if (StepsSpeedIncrease.Contains(Score))
+        {
+            UpdateSpeed();
+        }
     }
 
 

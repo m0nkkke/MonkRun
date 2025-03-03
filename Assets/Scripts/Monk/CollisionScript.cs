@@ -34,13 +34,13 @@ public class CollisionScript : SoundsScript
     }
     private void Update()
     {
-        if (GameManager.Instance.Score > 10)
-        {
-            GameManager.Instance.roadSpeed = 10;
-        }
-        else if (GameManager.Instance.Score < 10 && GameManager.Instance.roadSpeed == 10)
-        {
-            GameManager.Instance.roadSpeed = 8;
-        }
+        //if (GameManager.Instance.Score > 10)
+        //{
+        //    GameManager.Instance.roadSpeed = 10;
+        //}
+        //else if (GameManager.Instance.Score < 10 && GameManager.Instance.roadSpeed == 10)
+        //{
+        //    GameManager.Instance.roadSpeed = 8;
+        //}
     }
 }
