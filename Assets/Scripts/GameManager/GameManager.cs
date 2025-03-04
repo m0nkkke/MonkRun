@@ -97,6 +97,8 @@ public class GameManager : MonoBehaviour
 
         // Перезагружаем текущую сцену
         SceneManager.LoadScene(currentSceneIndex);
+        Bananas = 0;
+        Score = 0;
         roadSpeed = START_SPEED;
         CountMaxBananas = 0;
         isRunning = true;
