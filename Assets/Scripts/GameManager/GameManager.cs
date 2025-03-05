@@ -7,9 +7,9 @@ using UnityEngine.SceneManagement;
 [System.Serializable]
 public class GameData
 {
-    public int MaxScore;
-    public int MaxBananas;
-    public int AllBananas;
+    public int MaxScore = 0;
+    public int MaxBananas = 0;
+    public int AllBananas = 0;
 }
 public class GameManager : MonoBehaviour
 {
@@ -21,14 +21,19 @@ public class GameManager : MonoBehaviour
 
     public int CountMaxBananas = 0;
 
-    private readonly string filename = "result.json";
-    private readonly int START_SPEED = 8;
+    private const string filename = "result.json";
+    private const int START_SPEED = 8;
+
+    private const string KEY_SAVE = "mainData";
+
+    public GameData gameData;
 
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
+            gameData = SaveManager.Load<GameData>(KEY_SAVE);
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -48,7 +53,8 @@ public class GameManager : MonoBehaviour
     {
         try
         {
-            SaveResult();
+            //SaveResult();
+            Save();
         }
         catch { }
         Instance.Score = 0;
@@ -87,6 +93,17 @@ public class GameManager : MonoBehaviour
         // Сохраняем обновленные данные в файл
         string updatedJson = JsonUtility.ToJson(data, true);
         File.WriteAllText(filename, updatedJson);
+    }
+    public void Save()
+    {
+        gameData.MaxScore = Math.Max(gameData.MaxScore, Instance.Score);
+        gameData.MaxBananas = Math.Max(gameData.MaxBananas, Instance.Bananas);
+        gameData.AllBananas += Instance.Bananas;
+        SaveManager.Save(KEY_SAVE, gameData);
+    }
+    public void Load() 
+    {
+
     }
 
     [ContextMenu("Restart")]
