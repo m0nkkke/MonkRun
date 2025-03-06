@@ -621,12 +621,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1604612210756584138, guid: 291507768d15cc14e83e363ee3655a5a, type: 3}
+      propertyPath: m_ClearFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1604612210756584138, guid: 291507768d15cc14e83e363ee3655a5a, type: 3}
       propertyPath: field of view
       value: 50.320045
       objectReference: {fileID: 0}
     - target: {fileID: 1604612210756584138, guid: 291507768d15cc14e83e363ee3655a5a, type: 3}
       propertyPath: far clip plane
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1604612210756584138, guid: 291507768d15cc14e83e363ee3655a5a, type: 3}
+      propertyPath: m_BackGroundColor.a
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3104783048896155145, guid: 291507768d15cc14e83e363ee3655a5a, type: 3}
       propertyPath: m_Name
@@ -1161,7 +1169,7 @@ PrefabInstance:
     - target: {fileID: 512591888203117265, guid: 1b5b8168a065de84cbf2c69b7694ed43, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: -2729557045973369312, guid: 09ceddf34bc5499428ef6a551947eb57, type: 3}
+      objectReference: {fileID: 2100000, guid: b88729d16ff214d4d89da7e5fd1327e9, type: 2}
     - target: {fileID: 1650280902190982711, guid: 1b5b8168a065de84cbf2c69b7694ed43, type: 3}
       propertyPath: m_Name
       value: monkWithColider
@@ -2065,6 +2073,10 @@ PrefabInstance:
       propertyPath: Moon
       value: 
       objectReference: {fileID: 203483653}
+    - target: {fileID: 6200314538955553923, guid: 7f9a061c241f13e4494ede05ce8e4af6, type: 3}
+      propertyPath: DayDuration
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 9096882758436290084, guid: 7f9a061c241f13e4494ede05ce8e4af6, type: 3}
       propertyPath: m_Name
       value: DayCycleManager
