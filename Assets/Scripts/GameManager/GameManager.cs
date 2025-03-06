@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -14,6 +15,9 @@ public class GameData
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
+    public GameObject menuLose;
+    private CanvasGroup menuLoseCanvasGroup;
+
     public int roadSpeed = 8;
     public int Score = 0;
     public int Bananas = 0;
@@ -35,6 +39,7 @@ public class GameManager : MonoBehaviour
             Instance = this;
             gameData = SaveManager.Load<GameData>(KEY_SAVE);
             DontDestroyOnLoad(gameObject);
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
         else
         {
@@ -49,19 +54,74 @@ public class GameManager : MonoBehaviour
         //}
 
     }
+
+
     public void ResetGame()
     {
         try
         {
-            //SaveResult();
             Save();
         }
         catch { }
-        Instance.Score = 0;
-        Instance.Bananas = 0;
-        isRunning = false;
 
+        if (menuLose != null)
+        {
+            StartCoroutine(ShowMenuLoseSmooth()); // Запускаем плавную анимацию появления
+        }
+
+        isRunning = false;
     }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        FindMenuLose();
+    }
+
+    private void FindMenuLose()
+    {
+        if (menuLose == null)
+        {
+            GameObject parentObject = GameObject.Find("CanvasPause");
+            if (parentObject != null)
+            {
+                menuLose = parentObject.transform.Find("MenuLose")?.gameObject;
+            }
+        }
+
+        if (menuLose != null)
+        {
+            menuLoseCanvasGroup = menuLose.GetComponent<CanvasGroup>();
+            if (menuLoseCanvasGroup == null)
+            {
+                menuLoseCanvasGroup = menuLose.AddComponent<CanvasGroup>();
+            }
+
+            menuLoseCanvasGroup.alpha = 0f; // Делаем окно прозрачным
+            menuLose.SetActive(false);
+        }
+    }
+
+    private IEnumerator ShowMenuLoseSmooth()
+    {
+        menuLose.SetActive(true);
+        menuLoseCanvasGroup.interactable = false; // Отключаем взаимодействие на время анимации
+        menuLoseCanvasGroup.blocksRaycasts = false;
+
+        float duration = 0.5f; // Длительность анимации (секунды)
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            menuLoseCanvasGroup.alpha = Mathf.Lerp(0f, 1f, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        menuLoseCanvasGroup.alpha = 1f;
+        menuLoseCanvasGroup.interactable = true;
+        menuLoseCanvasGroup.blocksRaycasts = true;
+    }
+
 
     public void SaveResult()
     {
@@ -111,9 +171,10 @@ public class GameManager : MonoBehaviour
     {
         // Получаем индекс текущей сцены
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-
+   
         // Перезагружаем текущую сцену
         SceneManager.LoadScene(currentSceneIndex);
+        FindMenuLose();
         Bananas = 0;
         Score = 0;
         roadSpeed = START_SPEED;
