@@ -20,8 +20,6 @@ public class SceneSettings : MonoBehaviour
     public void RestartGame()
     {
         GameManager.Instance.Restart();
-        //SceneManager.LoadScene(1);
-        //Time.timeScale = 1f;
     }
     public void ExitInMenu()
     {
