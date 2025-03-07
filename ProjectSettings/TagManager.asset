@@ -16,6 +16,10 @@ TagManager:
   - Banana
   - BananaRoad
   - MenuLose
+  - MushroomDN
+  - MushroomB
+  - MushroomMB
+  - MushroomS
   layers:
   - Default
   - TransparentFX
