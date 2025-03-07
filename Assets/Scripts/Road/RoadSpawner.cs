@@ -43,7 +43,8 @@ public class RoadSpawner : MonoBehaviour
         int score = GameManager.Instance.Score;
 
         //if (score == 1) SpawnEmpty();
-        if (GameManager.Instance.StepsSpeedIncrease[countEmptySpawns] - score <= 10)
+        int diff = GameManager.Instance.StepsSpeedIncrease[countEmptySpawns] - score;
+        if (diff <= 10 && diff > 7)
         {
             SpawnEmpty();
             if (countEmptySpawns < GameManager.Instance.StepsSpeedIncrease.Count - 1 && GameManager.Instance.StepsSpeedIncrease.Contains(score + 1))
