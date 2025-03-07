@@ -15,6 +15,7 @@ TagManager:
   - HeadMonk
   - Banana
   - BananaRoad
+  - MenuLose
   layers:
   - Default
   - TransparentFX
