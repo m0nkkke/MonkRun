@@ -1,9 +1,14 @@
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public class MusicToggle : MonoBehaviour
 {
+    public AudioMixerGroup MusicMixer;
+    public AudioMixerGroup SoundsMixer;
+
     [Header("Звук")]
     public Button soundButton;      // Кнопка звука
     public TMP_Text soundButtonText; // Текст на кнопке звука
@@ -11,6 +16,7 @@ public class MusicToggle : MonoBehaviour
     [Header("Музыка")]
     public Button musicButton;      // Кнопка музыки
     public TMP_Text musicButtonText; // Текст на кнопке музыки
+
 
     private Color activeColor = Color.white;
     private Color inactiveColor;
@@ -33,6 +39,10 @@ public class MusicToggle : MonoBehaviour
     {
         bool isSoundOn = PlayerPrefs.GetInt("SoundOn", 1) == 1;
         isSoundOn = !isSoundOn; // Переключаем состояние
+        if (isSoundOn)
+            SoundsMixer.audioMixer.SetFloat("soundsVolume", 0);
+        else
+            SoundsMixer.audioMixer.SetFloat("soundsVolume", -80);
         PlayerPrefs.SetInt("SoundOn", isSoundOn ? 1 : 0);
         UpdateSoundUI(isSoundOn);
     }
@@ -48,6 +58,10 @@ public class MusicToggle : MonoBehaviour
     {
         bool isMusicOn = PlayerPrefs.GetInt("MusicOn", 1) == 1;
         isMusicOn = !isMusicOn; // Переключаем состояние
+        if (isMusicOn)
+            MusicMixer.audioMixer.SetFloat("musicVolume", 0);
+        else
+            MusicMixer.audioMixer.SetFloat("musicVolume", -80);
         PlayerPrefs.SetInt("MusicOn", isMusicOn ? 1 : 0);
         UpdateMusicUI(isMusicOn);
     }
