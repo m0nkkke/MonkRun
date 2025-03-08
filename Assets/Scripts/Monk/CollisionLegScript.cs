@@ -31,4 +31,13 @@ public class CollisionLegScript : SoundsScript
 
         }
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "RoadBottom")
+        {
+            print("мю днпнце");
+            GameManager.Instance.onRoad = true;
+        }
+    }
+   
 }
