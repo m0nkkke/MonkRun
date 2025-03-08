@@ -15,7 +15,7 @@ public class CollisionHeadScript : SoundsScript
         if (collision.gameObject.tag == "Spider")
         {
             print("Spider");
-            PlaySound(sounds[0]);
+            GameSoundManager.Instance.TriggerHitSound();
             collision.collider.enabled = false;
             GameManager.Instance.roadSpeed = 0;
             animator.Play("UmirOtKringa", -1, 0f);
@@ -24,7 +24,7 @@ public class CollisionHeadScript : SoundsScript
         else if (collision.gameObject.tag == "Fly")
         {
             print("Fly");
-            PlaySound(sounds[0]);
+            GameSoundManager.Instance.TriggerHitSound();
             collision.collider.enabled = false;
             GameManager.Instance.roadSpeed = 0;
             animator.Play("UmirOtKringa", -1, 0f);

@@ -15,7 +15,7 @@ public class CollisionScript : SoundsScript
         if (collision.gameObject.tag == "RockCollider")
         {
             print("Rock");
-            PlaySound(sounds[1]);
+            GameSoundManager.Instance.TriggerHitSound();
             collision.collider.enabled = false;
             GameManager.Instance.roadSpeed = 0;
             animator.Play("Hit On Legs", -1, 0f);
@@ -31,7 +31,7 @@ public class CollisionScript : SoundsScript
         {
             case "Banana":
                 GameManager.Instance.Bananas += 1;
-                PlaySound(sounds[0], volume: 0.2f);
+                GameSoundManager.Instance.TriggerBananaSound();
                 flagDestroy = true;
                 break;
             case "MushroomDN":

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MonkeyController : SoundsScript
+public class MonkeyController : MonoBehaviour
 {
     private Animator animator;
     private int jumpStateHash = Animator.StringToHash("Base Layer.Jump");
@@ -9,7 +9,7 @@ public class MonkeyController : SoundsScript
     {
         animator = GetComponent<Animator>();
         PlayAnimation("Running");
-        PlaySound(sounds[2], volume: 0.7f);
+        
 
         SwipeDetection.ClearAllSubscribers();
         SwipeDetection.SwipeEvent += SwipeControl;
@@ -50,13 +50,13 @@ public class MonkeyController : SoundsScript
         PlayAnimation("Jump");
         // –¿— ŒÃ≈Õ“»“‹ ƒÀﬂ Œ“ Àﬁ◊≈Õ»ﬂ ¡¿Õ»’Œœ¿
         //GameManager.Instance.onRoad = false;
-        PlaySound(sounds[0], volume: 0.2f);
+        GameSoundManager.Instance.TriggerJumpSound();
     }
 
     private void ToSlide()
     {
         PlayAnimation("Slide");
-        PlaySound(sounds[1], volume: 0.2f);
+        GameSoundManager.Instance.TriggerCrouchSound();
     }
 
     private void SwipeControl(Vector2 e)

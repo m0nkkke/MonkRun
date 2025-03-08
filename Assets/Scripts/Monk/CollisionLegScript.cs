@@ -14,7 +14,7 @@ public class CollisionLegScript : SoundsScript
         if (other.gameObject.name == "PitTrigger")
         {
             print("Pit");
-            PlaySound(sounds[0]);
+            GameSoundManager.Instance.TriggerHitSound();
             other.enabled = false;
             GameManager.Instance.roadSpeed = 0;
             animator.Play("Sweep Fall", -1, 0f);
@@ -23,7 +23,7 @@ public class CollisionLegScript : SoundsScript
         else if (other.gameObject.name == "RiverTrigger")
         {
             print("River");
-            PlaySound(sounds[0]);
+            GameSoundManager.Instance.TriggerHitSound();
             other.enabled = false;
             GameManager.Instance.roadSpeed = 0;
             animator.Play("Sweep Fall", -1, 0f);
