@@ -5,7 +5,6 @@ public class MonkeyController : SoundsScript
     private Animator animator;
     private int jumpStateHash = Animator.StringToHash("Base Layer.Jump");
     private int slideStateHash = Animator.StringToHash("Base Layer.Slide");
-
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -22,11 +21,12 @@ public class MonkeyController : SoundsScript
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                ToJump();
+                if (GameManager.Instance.onRoad)  
+                    ToJump();
             }
             else if (Input.GetKeyDown(KeyCode.LeftShift))
             {
-                ToSlide();
+                    ToSlide();
             }
             else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Jump") ||
                      animator.GetCurrentAnimatorStateInfo(0).IsName("Slide"))
@@ -48,6 +48,8 @@ public class MonkeyController : SoundsScript
     private void ToJump()
     {
         PlayAnimation("Jump");
+        // ÐÀÑÊÎÌÅÍÒÈÒÜ ÄËß ÎÒÊËÞ×ÅÍÈß ÁÀÍÈÕÎÏÀ
+        //GameManager.Instance.onRoad = false;
         PlaySound(sounds[0], volume: 0.2f);
     }
 
@@ -61,16 +63,17 @@ public class MonkeyController : SoundsScript
     {
         if (GameManager.Instance.isRunning) 
         {
-            if (e.y > 0) ToJump();
-            else if (e.y < 0) ToSlide();
+            if (e.y > 0)
+                if (GameManager.Instance.onRoad)
+                    ToJump();
+            else if (e.y < 0)
+                ToSlide();
         }
         else if (e.x > 0)
         {
             GameManager.Instance.Restart();
         }
     }
-
-
 
 
 

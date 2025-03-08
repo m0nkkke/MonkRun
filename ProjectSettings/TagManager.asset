@@ -20,6 +20,7 @@ TagManager:
   - MushroomB
   - MushroomMB
   - MushroomS
+  - RoadBottom
   layers:
   - Default
   - TransparentFX

@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     private const int START_SPEED = 8;
 
     private const string KEY_SAVE = "mainData";
+    public bool onRoad = false;
 
     public GameData gameData;
 

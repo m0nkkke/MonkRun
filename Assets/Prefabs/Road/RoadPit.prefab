@@ -295,6 +295,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: road_pit
       objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 4d950c2381eec8c4dad3639ac10c98ae, type: 3}
+      propertyPath: m_TagString
+      value: RoadBottom
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
