@@ -25,12 +25,40 @@ public class CollisionScript : SoundsScript
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Banana")
+        string tag = other.gameObject.tag;
+        bool flagDestroy = false;
+        switch (tag)
         {
-            GameManager.Instance.Bananas += 1;
-            PlaySound(sounds[0], volume: 0.2f);
-            Destroy(other.gameObject);
+            case "Banana":
+                GameManager.Instance.Bananas += 1;
+                PlaySound(sounds[0], volume: 0.2f);
+                flagDestroy = true;
+                break;
+            case "MushroomDN":
+                flagDestroy = true;
+                break;
+            case "MushroomB":
+                flagDestroy = true;
+                break;
+            case "MushroomMB":
+                flagDestroy = true;
+                break;
+            case "MushroomS":
+                flagDestroy = true;
+                break;
         }
+        if (flagDestroy) Destroy(other.gameObject);
+
+        //if (other.gameObject.tag == "Banana")
+        //{
+        //    GameManager.Instance.Bananas += 1;
+        //    PlaySound(sounds[0], volume: 0.2f);
+        //    Destroy(other.gameObject);
+        //}
+        //else if (other.gameObject.tag == "MushroomDN")
+        //{
+            
+        //}
     }
     private void Update()
     {
