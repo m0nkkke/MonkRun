@@ -190,7 +190,7 @@ public class GameManager : MonoBehaviour
         // + Bananas / CountMaxBananas
     }
 
-    public readonly List<int> StepsSpeedIncrease = new List<int>() { 20, 50, 100, 200, 400, 900, 1300, 1700};
+    public readonly List<int> StepsSpeedIncrease = new List<int>() { 15, 30, 50, 100, 170, 300, 500, 700};
     public void IncreaseScore()
     {
         Score += 1;

@@ -17,11 +17,15 @@ public class RoadSpawner : MonoBehaviour
     [SerializeField] private List<GameObject> SpiderRoads;
     [SerializeField] private List<GameObject> RiverRoads;
     [SerializeField] private List<GameObject> PitRoads;
+    [SerializeField] private List<GameObject> MushroomRoads;
 
     private GameObject road;
 
     private List<int> posEmptySpawnTrigger;
     private int countEmptySpawns = 0;
+
+    [SerializeField]
+    private bool mushrooms = false;
 
     private void Start() 
     {
@@ -32,6 +36,7 @@ public class RoadSpawner : MonoBehaviour
             .Concat(RiverRoads)
             .Concat(PitRoads)
             .ToList();
+        if (mushrooms) roads = roads.Concat(MushroomRoads).ToList();
         road = Instantiate(roads[Random.Range(0, roads.Count)], transform.position, Quaternion.identity);
         //posEmptySpawnTrigger = GameManager.Instance.StepsSpeedIncrease.Select(x => (x - 10)).ToList();
     }
@@ -44,7 +49,7 @@ public class RoadSpawner : MonoBehaviour
 
         //if (score == 1) SpawnEmpty();
         int diff = GameManager.Instance.StepsSpeedIncrease[countEmptySpawns] - score;
-        if (diff <= 10 && diff > 7)
+        if (diff <= 15 && diff > 13)
         {
             SpawnEmpty();
             if (countEmptySpawns < GameManager.Instance.StepsSpeedIncrease.Count - 1 && GameManager.Instance.StepsSpeedIncrease.Contains(score + 1))
