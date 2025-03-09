@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public int roadSpeed = 8;
     public int Score = 0;
     public int Bananas = 0;
+    public int CoefBanana = 1;
     public bool isRunning = true;
 
     public int CountMaxBananas = 0;
@@ -179,6 +180,7 @@ public class GameManager : MonoBehaviour
         Bananas = 0;
         Score = 0;
         roadSpeed = START_SPEED;
+        CoefBanana = 1;
         CountMaxBananas = 0;
         isRunning = true;
     }

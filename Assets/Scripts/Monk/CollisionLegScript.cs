@@ -13,7 +13,7 @@ public class CollisionLegScript : SoundsScript
     {
         if (other.gameObject.name == "PitTrigger")
         {
-            print("Pit");
+            //print("Pit");
             GameSoundManager.Instance.TriggerHitSound();
             other.enabled = false;
             GameManager.Instance.roadSpeed = 0;
@@ -22,7 +22,7 @@ public class CollisionLegScript : SoundsScript
         }
         else if (other.gameObject.name == "RiverTrigger")
         {
-            print("River");
+            //print("River");
             GameSoundManager.Instance.TriggerHitSound();
             other.enabled = false;
             GameManager.Instance.roadSpeed = 0;
@@ -35,7 +35,7 @@ public class CollisionLegScript : SoundsScript
     {
         if (collision.gameObject.tag == "RoadBottom")
         {
-            print("屠 奈形门");
+            //print("屠 奈形门");
             GameManager.Instance.onRoad = true;
         }
     }

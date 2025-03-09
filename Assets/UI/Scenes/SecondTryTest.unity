@@ -2128,7 +2128,7 @@ MonoBehaviour:
   - {fileID: 4756365457578436582, guid: 452371500bb848343a36a7daaa30f27d, type: 3}
   - {fileID: 3253420423125560404, guid: a0c0a514e751d794987d57919e903908, type: 3}
   - {fileID: 3678901897323883432, guid: 0c3537de4b27024418484100d9b4bc4e, type: 3}
-  mushrooms: 0
+  mushrooms: 1
 --- !u!1 &1775873770 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2691495891889908814, guid: 4103598897a6cc94286a4862fbca460f, type: 3}
