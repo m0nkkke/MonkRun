@@ -1,5 +1,7 @@
-using System;
+п»їusing System;
+using System.Security.Policy;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class GameSoundManager : MonoBehaviour
 {
@@ -11,6 +13,7 @@ public class GameSoundManager : MonoBehaviour
     public AudioClip crouchSound;
     public AudioClip hitSound;
     public AudioClip bananaSound;
+    public AudioClip mushroomSound;
 
     public AudioSource backgroundMusicSource;
 
@@ -18,8 +21,9 @@ public class GameSoundManager : MonoBehaviour
     public event Action OnCrouch;
     public event Action OnHit;
     public event Action OnBanana;
+    public event Action OnMushroom;
 
-    public AudioClip backgroundMusic; 
+    public AudioClip backgroundMusic;
 
     private void Awake()
     {
@@ -29,7 +33,6 @@ public class GameSoundManager : MonoBehaviour
 
     private void Start()
     {
-        // Включаем фоновую музыку при старте игры
         PlayBackgroundMusic();
     }
     private void OnEnable()
@@ -38,6 +41,7 @@ public class GameSoundManager : MonoBehaviour
         OnCrouch += PlaySlideSound;
         OnHit += PlayHitSound;
         OnBanana += PlayBananaSound;
+        OnMushroom += PlayMushroomSound;
     }
 
     private void OnDisable()
@@ -46,6 +50,7 @@ public class GameSoundManager : MonoBehaviour
         OnCrouch -= PlaySlideSound;
         OnHit -= PlayHitSound;
         OnBanana -= PlayBananaSound;
+        OnMushroom -= PlayMushroomSound;
     }
 
     private void PlayJumpSound()
@@ -67,19 +72,24 @@ public class GameSoundManager : MonoBehaviour
         audioSource.PlayOneShot(bananaSound);
     }
 
+    private void PlayMushroomSound()
+    {
+        audioSource.PlayOneShot(mushroomSound); 
+    }
+
 
     public void TriggerJumpSound()
     {
-        OnJump?.Invoke(); // Вызов события прыжка
+        OnJump?.Invoke(); // Р’С‹Р·РѕРІ СЃРѕР±С‹С‚РёСЏ РїСЂС‹Р¶РєР°
     }
 
     public void TriggerCrouchSound()
     {
-        OnCrouch?.Invoke(); // Вызов события приседания
+        OnCrouch?.Invoke(); // Р’С‹Р·РѕРІ СЃРѕР±С‹С‚РёСЏ РїСЂРёСЃРµРґР°РЅРёСЏ
     }
     public void TriggerHitSound()
     {
-        OnHit?.Invoke(); // Вызов события удара
+        OnHit?.Invoke(); // Р’С‹Р·РѕРІ СЃРѕР±С‹С‚РёСЏ СѓРґР°СЂР°
     }
 
     public void TriggerBananaSound()
@@ -87,13 +97,18 @@ public class GameSoundManager : MonoBehaviour
         OnBanana?.Invoke();
     }
 
-    // Воспроизведение фоновой музыки
+    public void TriggerMushroomSound()
+    {
+        OnMushroom?.Invoke();
+    }
+
+    // Р’РѕСЃРїСЂРѕРёР·РІРµРґРµРЅРёРµ С„РѕРЅРѕРІРѕР№ РјСѓР·С‹РєРё
     public void PlayBackgroundMusic()
     {
         if (backgroundMusic != null && !backgroundMusicSource.isPlaying)
         {
             backgroundMusicSource.clip = backgroundMusic;
-            backgroundMusicSource.loop = true; // Зацикливаем музыку
+            backgroundMusicSource.loop = true; 
             backgroundMusicSource.Play();
         }
     }
@@ -106,7 +121,6 @@ public class GameSoundManager : MonoBehaviour
         }
     }
 
-    // Включение/отключение фоновой музыки через настройки
     public void SetBackgroundMusicEnabled(bool isEnabled)
     {
         if (isEnabled)
@@ -118,12 +132,10 @@ public class GameSoundManager : MonoBehaviour
             StopBackgroundMusic();
         }
 
-        // Сохраняем состояние в настройках
         PlayerPrefs.SetInt("BackgroundMusicEnabled", isEnabled ? 1 : 0);
         PlayerPrefs.Save();
     }
 
-    // Проверка настроек при запуске
     private void LoadSettings()
     {
         bool musicEnabled = PlayerPrefs.GetInt("BackgroundMusicEnabled", 1) == 1;

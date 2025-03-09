@@ -36,14 +36,18 @@ public class CollisionScript : SoundsScript
                 break;
             case "MushroomDN":
                 flagDestroy = true;
+                GameSoundManager.Instance.TriggerMushroomSound();
                 break;
             case "MushroomB":
                 flagDestroy = true;
+                GameSoundManager.Instance.TriggerMushroomSound();
                 break;
             case "MushroomMB":
+                GameSoundManager.Instance.TriggerMushroomSound();
                 flagDestroy = true;
                 break;
             case "MushroomS":
+                GameSoundManager.Instance.TriggerMushroomSound();
                 flagDestroy = true;
                 break;
         }

@@ -38,18 +38,13 @@ public class MusicToggle : MonoBehaviour
     private void ToggleSound()
     {
         bool isSoundOn = PlayerPrefs.GetInt("SoundOn", 1) == 1;
-        isSoundOn = !isSoundOn;
-
-        if (SoundsMixer != null && SoundsMixer.audioMixer != null)
-        {
-            SoundsMixer.audioMixer.SetFloat("soundsVolume", isSoundOn ? 0 : -80);
-            PlayerPrefs.SetInt("SoundOn", isSoundOn ? 1 : 0);
-            UpdateSoundUI(isSoundOn);
-        }
+        isSoundOn = !isSoundOn; // Переключаем состояние
+        if (isSoundOn)
+            SoundsMixer.audioMixer.SetFloat("soundsVolume", 0);
         else
-        {
-            Debug.LogWarning("SoundsMixer или audioMixer не назначены!");
-        }
+            SoundsMixer.audioMixer.SetFloat("soundsVolume", -80);
+        PlayerPrefs.SetInt("SoundOn", isSoundOn ? 1 : 0);
+        UpdateSoundUI(isSoundOn);
     }
 
     private void UpdateSoundUI(bool isOn)
@@ -64,7 +59,7 @@ public class MusicToggle : MonoBehaviour
         bool isMusicOn = PlayerPrefs.GetInt("MusicOn", 1) == 1;
         isMusicOn = !isMusicOn; // Переключаем состояние
         if (isMusicOn)
-            MusicMixer.audioMixer.SetFloat("musicVolume", 0);
+            MusicMixer.audioMixer.SetFloat("musicVolume", -15);
         else
             MusicMixer.audioMixer.SetFloat("musicVolume", -80);
         PlayerPrefs.SetInt("MusicOn", isMusicOn ? 1 : 0);

@@ -903,7 +903,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 444308760107626192, guid: 4103598897a6cc94286a4862fbca460f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 3.8366547
+      value: 3.83667
       objectReference: {fileID: 0}
     - target: {fileID: 2265680053374308771, guid: 4103598897a6cc94286a4862fbca460f, type: 3}
       propertyPath: m_Pivot.x
@@ -1111,8 +1111,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 0}
   clickSound: {fileID: 0}
-  jumpSound: {fileID: 0}
-  crouchSound: {fileID: 0}
 --- !u!114 &1028642723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1156,8 +1154,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 0}
   clickSound: {fileID: 0}
-  jumpSound: {fileID: 0}
-  crouchSound: {fileID: 0}
 --- !u!1001 &1030275034
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2290,7 +2286,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 7169223983787874236, guid: d98db8152a14820449b13c6536833fa7, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.15
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2389,8 +2385,9 @@ MonoBehaviour:
   audioSource: {fileID: 2028656927}
   jumpSound: {fileID: 8300000, guid: bd81125fa082e5a47850ef0f7421a56f, type: 3}
   crouchSound: {fileID: 8300000, guid: ac970f827d69219498cb948a8e171539, type: 3}
-  hitSound: {fileID: 8300000, guid: a8406537aa2b7934898200fb43c709b4, type: 3}
+  hitSound: {fileID: 8300000, guid: 83f0f9044035dcf4e8d7f3523ac2cd18, type: 3}
   bananaSound: {fileID: 8300000, guid: bbd7f718ee412cc4c86685b1ef9bb93f, type: 3}
+  mushroomSound: {fileID: 8300000, guid: ccd0458654d261046a40eb5d014748ab, type: 3}
   backgroundMusicSource: {fileID: 232302906}
   backgroundMusic: {fileID: 8300000, guid: 268b40f3402802d448931720e60ace2c, type: 3}
 --- !u!1001 &2031486699

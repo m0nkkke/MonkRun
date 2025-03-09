@@ -202,8 +202,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 1031593894}
   clickSound: {fileID: 8300000, guid: ab8dc878d0239f64fa9c9256ebb78cbe, type: 3}
-  jumpSound: {fileID: 0}
-  crouchSound: {fileID: 0}
 --- !u!114 &67858764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -634,8 +632,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 1031593894}
   clickSound: {fileID: 8300000, guid: ab8dc878d0239f64fa9c9256ebb78cbe, type: 3}
-  jumpSound: {fileID: 0}
-  crouchSound: {fileID: 0}
 --- !u!114 &951769727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -684,8 +680,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 1031593894}
   clickSound: {fileID: 8300000, guid: ab8dc878d0239f64fa9c9256ebb78cbe, type: 3}
-  jumpSound: {fileID: 0}
-  crouchSound: {fileID: 0}
 --- !u!114 &952469767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -734,8 +728,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 1031593894}
   clickSound: {fileID: 8300000, guid: ab8dc878d0239f64fa9c9256ebb78cbe, type: 3}
-  jumpSound: {fileID: 0}
-  crouchSound: {fileID: 0}
 --- !u!114 &998253923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -912,8 +904,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 1031593894}
   clickSound: {fileID: 0}
-  jumpSound: {fileID: 0}
-  crouchSound: {fileID: 0}
 --- !u!1001 &1050279589
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1296,8 +1286,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 1031593894}
   clickSound: {fileID: 8300000, guid: ab8dc878d0239f64fa9c9256ebb78cbe, type: 3}
-  jumpSound: {fileID: 0}
-  crouchSound: {fileID: 0}
 --- !u!114 &1485911134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1336,8 +1324,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1494716872}
-  - component: {fileID: 1494716874}
   - component: {fileID: 1494716875}
+  - component: {fileID: 1494716874}
   m_Layer: 5
   m_Name: MusicManager
   m_TagString: Untagged
@@ -1472,10 +1460,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc7156e12ad136646819444ce7341a2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 0}
+  audioSource: {fileID: 1494716874}
   clickSound: {fileID: 0}
-  jumpSound: {fileID: 0}
-  crouchSound: {fileID: 0}
 --- !u!4 &1590052803 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1523563012047969351, guid: c3c6f2b520809a6459ba5c91cac95ad1, type: 3}
@@ -1500,8 +1486,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 1031593894}
   clickSound: {fileID: 8300000, guid: ab8dc878d0239f64fa9c9256ebb78cbe, type: 3}
-  jumpSound: {fileID: 0}
-  crouchSound: {fileID: 0}
 --- !u!114 &1699542119
 MonoBehaviour:
   m_ObjectHideFlags: 0
