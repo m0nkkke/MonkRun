@@ -21,12 +21,13 @@ public class MonkeyController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                if (GameManager.Instance.onRoad)  
-                    ToJump();
+                if (GameManager.Instance.invertMovement) ToSlide();
+                else if (GameManager.Instance.onRoad) ToJump();
             }
             else if (Input.GetKeyDown(KeyCode.LeftShift))
             {
-                    ToSlide();
+                if (GameManager.Instance.invertMovement && GameManager.Instance.onRoad) ToJump();
+                else ToSlide();
             }
             else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Jump") ||
                      animator.GetCurrentAnimatorStateInfo(0).IsName("Slide"))
@@ -64,15 +65,24 @@ public class MonkeyController : MonoBehaviour
         if (GameManager.Instance.isRunning) 
         {
             if (e.y > 0)
-                if (GameManager.Instance.onRoad)
-                    ToJump();
+            {
+                if (GameManager.Instance.invertMovement)
+                {
+                    ToSlide();
+                }
+                else if (GameManager.Instance.onRoad) ToJump();
+            }
             else if (e.y < 0)
-                ToSlide();
+            {
+                if (GameManager.Instance.invertMovement && GameManager.Instance.onRoad) ToJump();
+                else ToSlide();
+            }
         }
-        else if (e.x > 0)
-        {
-            GameManager.Instance.Restart();
-        }
+        // дебаг рестарт (уже не надо)
+        //else if (e.x > 0)
+        //{
+        //    GameManager.Instance.Restart();
+        //}
     }
 
 
