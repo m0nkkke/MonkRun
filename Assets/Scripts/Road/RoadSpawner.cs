@@ -19,12 +19,12 @@ public class RoadSpawner : MonoBehaviour
     [SerializeField] private List<GameObject> PitRoads;
     [SerializeField] private List<GameObject> MushroomRoads;
 
-    private float coefEmpty = 10f;
-    private float coefRock = 20f;
-    private float coefBanana = 10f;
+    private float coefEmpty = 5f;
+    private float coefRock = 25f;
+    private float coefBanana = 15f;
     private float coefFly = 20f;
     private float coefSpider = 10f;
-    private float coefRiver = 10f;
+    private float coefRiver = 5f;
     private float coefPit = 10f;
     private float coefMushroom = 10f;
 
@@ -128,9 +128,9 @@ public class RoadSpawner : MonoBehaviour
             CategorySegment.Pit,
             CategorySegment.Mushroom 
         };
-
+        float sm = coefficients.Sum();
         // Генерируем случайное число от 0 до 100
-        float randomValue = Random.Range(0f, 100f);
+        float randomValue = Random.Range(0f, sm);
 
         // Проходим по списку коэффициентов и выбираем сегмент
         float cumulativeProbability = 0f;
