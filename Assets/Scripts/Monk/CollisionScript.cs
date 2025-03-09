@@ -94,7 +94,8 @@ public class CollisionScript : SoundsScript
         yield return new WaitForSeconds(speedReductionDuration);
 
         // Возвращаем исходную скорость
-        GameManager.Instance.roadSpeed += diff;
+        if (GameManager.Instance.isRunning)
+            GameManager.Instance.roadSpeed += diff;
     }
     private IEnumerator IncreaseBananaCoef()
     {
