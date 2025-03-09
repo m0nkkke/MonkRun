@@ -20,7 +20,7 @@ public class DayCycleManager : MonoBehaviour
 
     private bool isTransitioning = false; // Флаг перехода
     private float targetTimeOfDay; // Целевое время суток
-    private int nextScoreThreshold = 10; // Следующий порог очков
+    public int nextScoreThreshold = 10; // Следующий порог очков
 
     void Start()
     {
@@ -29,9 +29,9 @@ public class DayCycleManager : MonoBehaviour
 
     void Update()
     {
-        if (!isTransitioning && GameManager.Instance.Score >= nextScoreThreshold)
+        if (!isTransitioning && GameManager.Instance.Score >= GameManager.Instance.nextScoreThreshold)
         {
-            nextScoreThreshold += 10; // порог смены
+            GameManager.Instance.nextScoreThreshold += 100; // порог смены
             ChangeDayNight();
         }
 

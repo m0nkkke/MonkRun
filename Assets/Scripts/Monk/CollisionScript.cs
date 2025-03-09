@@ -112,14 +112,22 @@ public class CollisionScript : SoundsScript
     }
     private IEnumerator SwipeDayNight()
     {
-        int time = 20;
-
+        int time = 10;
+        int curTime = 0;
+        int startStep = GameManager.Instance.nextScoreThreshold;
+        GameManager.Instance.invertMovement = true;
+        while (curTime <= time)
+        {
+            GameManager.Instance.nextScoreThreshold = 1;
+            curTime += 1;
+            yield return new WaitForSeconds(1);
+        }
+        GameManager.Instance.nextScoreThreshold = startStep;
+        GameManager.Instance.invertMovement = false;
         // Тут надо вызвать быструю смену дня и ночи
         // если это какой то кэф то просто изменить
         // если функция то можно в цикл бахнуть
         print("swipe");
-
-        yield return new WaitForSeconds(time);
     }
 
 }

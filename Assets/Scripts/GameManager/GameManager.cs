@@ -18,16 +18,18 @@ public class GameManager : MonoBehaviour
     public GameObject menuLose;
     private CanvasGroup menuLoseCanvasGroup;
 
-    public int roadSpeed = 8;
+    public int roadSpeed = 20;
     public int Score = 0;
     public int Bananas = 0;
     public int CoefBanana = 1;
     public bool isRunning = true;
+    public int nextScoreThreshold = 100;
+    public bool invertMovement = false;
 
     public int CountMaxBananas = 0;
 
     private const string filename = "result.json";
-    private const int START_SPEED = 8;
+    private const int START_SPEED = 20;
 
     private const string KEY_SAVE = "mainData";
     public bool onRoad = false;
@@ -182,6 +184,8 @@ public class GameManager : MonoBehaviour
         roadSpeed = START_SPEED;
         CoefBanana = 1;
         CountMaxBananas = 0;
+        nextScoreThreshold = 100;
+        invertMovement = false;
         isRunning = true;
     }
 
