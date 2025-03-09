@@ -19,6 +19,15 @@ public class RoadSpawner : MonoBehaviour
     [SerializeField] private List<GameObject> PitRoads;
     [SerializeField] private List<GameObject> MushroomRoads;
 
+    private float coefEmpty = 10f;
+    private float coefRock = 20f;
+    private float coefBanana = 10f;
+    private float coefFly = 20f;
+    private float coefSpider = 10f;
+    private float coefRiver = 10f;
+    private float coefPit = 10f;
+    private float coefMushroom = 10f;
+
     private GameObject road;
 
     private List<int> posEmptySpawnTrigger;
@@ -55,11 +64,43 @@ public class RoadSpawner : MonoBehaviour
             if (countEmptySpawns < GameManager.Instance.StepsSpeedIncrease.Count - 1 && GameManager.Instance.StepsSpeedIncrease.Contains(score + 1))
                 countEmptySpawns += 1;
         }
-        else SpawnRoad(roads);
+        else SpawnRoadByCategory(ChooseSegment());
+        //else SpawnRoad(roads);
     }
     private void SpawnEmpty()
     {
         SpawnRoad(EmptyRoads);
+    }
+
+    private void SpawnRoadByCategory(CategorySegment cat)
+    {
+        switch (cat)
+        {
+            case CategorySegment.Empty:
+                SpawnRoad(EmptyRoads);
+                break;
+            case CategorySegment.Rock:
+                SpawnRoad(RockRoads);
+                break;
+            case CategorySegment.Pit:
+                SpawnRoad(PitRoads);
+                break;
+            case CategorySegment.Spider:
+                SpawnRoad(SpiderRoads);
+                break;
+            case CategorySegment.Banana:
+                SpawnRoad(BananaRoads);
+                break;
+            case CategorySegment.Fly:
+                SpawnRoad(FlyRoads);
+                break;
+            case CategorySegment.River:
+                SpawnRoad(RiverRoads);
+                break;
+            case CategorySegment.Mushroom:
+                SpawnRoad(MushroomRoads);
+                break;
+        }
     }
 
     private void SpawnRoad(List<GameObject> roadList)
@@ -71,5 +112,52 @@ public class RoadSpawner : MonoBehaviour
         }
     }
 
+    // Метод для выбора сегмента
+    public CategorySegment ChooseSegment()
+    {
+        // Создаем список с коэффициентами
+        List<float> coefficients = new List<float> { coefEmpty, coefRock, coefBanana, coefFly, coefSpider, coefRiver, coefPit, coefMushroom };
+        List<CategorySegment> segmentNames = new List<CategorySegment> 
+        { 
+            CategorySegment.Empty, 
+            CategorySegment.Rock, 
+            CategorySegment.Banana, 
+            CategorySegment.Fly,
+            CategorySegment.Spider,
+            CategorySegment.River, 
+            CategorySegment.Pit,
+            CategorySegment.Mushroom 
+        };
 
+        // Генерируем случайное число от 0 до 100
+        float randomValue = Random.Range(0f, 100f);
+
+        // Проходим по списку коэффициентов и выбираем сегмент
+        float cumulativeProbability = 0f;
+        for (int i = 0; i < coefficients.Count; i++)
+        {
+            cumulativeProbability += coefficients[i];
+            if (randomValue <= cumulativeProbability)
+            {
+                return segmentNames[i];
+            }
+        }
+
+        // Если что-то пошло не так, возвращаем пустой сегмент
+        return CategorySegment.Empty;
+    }
+
+
+}
+
+public enum CategorySegment
+{
+    Empty,
+    Rock,
+    Banana,
+    Fly,
+    Spider,
+    River,
+    Pit,
+    Mushroom,
 }
