@@ -29,9 +29,21 @@ public class MusicToggle : MonoBehaviour
         soundButton.onClick.AddListener(ToggleSound);
         musicButton.onClick.AddListener(ToggleMusic);
 
+        bool isSoundOn = PlayerPrefs.GetInt("SoundOn", 1) == 1;
+        bool isMusicOn = PlayerPrefs.GetInt("MusicOn", 1) == 1;
+
         // Восстанавливаем состояние из PlayerPrefs
-        UpdateSoundUI(PlayerPrefs.GetInt("SoundOn", 1) == 1);
-        UpdateMusicUI(PlayerPrefs.GetInt("MusicOn", 1) == 1);
+        UpdateSoundUI(isSoundOn);
+        if (!isSoundOn)
+            SoundsMixer.audioMixer.SetFloat("soundsVolume", -80);
+
+        UpdateMusicUI(isMusicOn);
+        if (!isMusicOn)
+            MusicMixer.audioMixer.SetFloat("musicVolume", -80);
+
+
+
+
     }
 
     // ===== ЗВУК =====

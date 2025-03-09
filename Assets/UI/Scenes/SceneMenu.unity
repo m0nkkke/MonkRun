@@ -1092,6 +1092,25 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6430c1013e1468446a9ce7c87b58127d, type: 3}
+--- !u!1 &1232369053 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1234167422324500334, guid: 0e505c555d7aa5745b5ceb460e612601, type: 3}
+  m_PrefabInstance: {fileID: 2039789715}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1232369058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1232369053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc4da626c034f15419af4fc110041f67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MusicMixer: {fileID: 3461289185593617431, guid: d98db8152a14820449b13c6536833fa7, type: 2}
+  SoundsMixer: {fileID: 7169223983787874236, guid: d98db8152a14820449b13c6536833fa7, type: 2}
 --- !u!4 &1257736586 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2975146511965566380, guid: 086aba63285a66e44865e1c5b60d3cba, type: 3}
@@ -1130,7 +1149,10 @@ MonoBehaviour:
   roadSpeed: 8
   Score: 0
   Bananas: 0
+  CoefBanana: 1
   isRunning: 1
+  nextScoreThreshold: 100
+  invertMovement: 0
   CountMaxBananas: 0
   onRoad: 0
   gameData:
@@ -1879,11 +1901,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 708167193921992233, guid: 0e505c555d7aa5745b5ceb460e612601, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.8972931
+      value: -0.8973007
       objectReference: {fileID: 0}
     - target: {fileID: 1234167422324500334, guid: 0e505c555d7aa5745b5ceb460e612601, type: 3}
       propertyPath: m_Name
       value: CanvasMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 2201246134783406316, guid: 0e505c555d7aa5745b5ceb460e612601, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -2.5277405
       objectReference: {fileID: 0}
     - target: {fileID: 2303174689268770858, guid: 0e505c555d7aa5745b5ceb460e612601, type: 3}
       propertyPath: m_Camera
@@ -1997,6 +2023,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -4.1990356
       objectReference: {fileID: 0}
+    - target: {fileID: 5879368838467740133, guid: 0e505c555d7aa5745b5ceb460e612601, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -3.498825
+      objectReference: {fileID: 0}
     - target: {fileID: 5992692870779514379, guid: 0e505c555d7aa5745b5ceb460e612601, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
@@ -2085,11 +2115,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9176583258043268305, guid: 0e505c555d7aa5745b5ceb460e612601, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1895363569122477190, guid: 0e505c555d7aa5745b5ceb460e612601, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1234167422324500334, guid: 0e505c555d7aa5745b5ceb460e612601, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1232369058}
     - targetCorrespondingSourceObject: {fileID: 185727347943469830, guid: 0e505c555d7aa5745b5ceb460e612601, type: 3}
       insertIndex: -1
       addedObject: {fileID: 751770895}
