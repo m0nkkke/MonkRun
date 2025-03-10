@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     public GameObject menuLose;
     private CanvasGroup menuLoseCanvasGroup;
 
-    public int roadSpeed = 20;
+    public int roadSpeed = 8;
     public int Score = 0;
     public int Bananas = 0;
     public int CoefBanana = 1;
@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     public int CountMaxBananas = 0;
 
     private const string filename = "result.json";
-    private const int START_SPEED = 20;
+    private const int START_SPEED = 8;
 
     private const string KEY_SAVE = "mainData";
     public bool onRoad = false;
@@ -74,6 +74,7 @@ public class GameManager : MonoBehaviour
         }
 
         isRunning = false;
+        //roadSpeed = 0;
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -185,6 +186,7 @@ public class GameManager : MonoBehaviour
         CoefBanana = 1;
         CountMaxBananas = 0;
         nextScoreThreshold = 100;
+        CostRevive = START_COST_REVIVE;
         invertMovement = false;
         isRunning = true;
     }
@@ -208,4 +210,124 @@ public class GameManager : MonoBehaviour
     }
 
 
+
+    #region Возрождение
+
+
+    private bool isReviveAvailable = false; // Доступно ли возрождение
+    private Coroutine reviveCoroutine; // Ссылка на корутин
+    private int lastSpeed = 0;
+    private const int START_COST_REVIVE = 500;
+    private int CostRevive = START_COST_REVIVE;
+    
+    public void OnMonkCollision(ColliderTypes collider)
+    {
+        lastSpeed = roadSpeed;
+        StartCoroutine(Rollback(collider));
+        if (gameData.AllBananas < CostRevive)
+        {
+            ResetGame();
+        }
+        else if (!isReviveAvailable)
+        {
+            isReviveAvailable = true;
+            isRunning = false;
+            //roadSpeed = 0;
+            reviveCoroutine = StartCoroutine(ReviveTimer()); // Запускаем корутин
+        }
+    }
+
+    // Корутин для таймера возрождения
+    private IEnumerator ReviveTimer()
+    {
+        float reviveTimer = 10f; // 5 секунд на возрождение
+
+        while (reviveTimer > 0)
+        {
+            reviveTimer -= Time.deltaTime;
+            yield return null; // Ждём один кадр
+        }
+
+        // Если время вышло, сбрасываем игру
+        if (isReviveAvailable)
+        {
+            ResetGame();
+        }
+    }
+
+    // Возрождение за банан
+    [ContextMenu("Возрождение")]
+    public void Revive()
+    {
+        if (isReviveAvailable && gameData.AllBananas >= CostRevive)
+        {
+            gameData.AllBananas -= CostRevive; // Отнимаем 1 банан
+            CostRevive *= 2;
+            roadSpeed = lastSpeed;
+            isRunning = true;
+            GameObject Monk = GameObject.Find("monkWithColider");
+            MonkeyController monkeyController = Monk.GetComponent<MonkeyController>();
+            monkeyController.PlayAnimation("Running");
+            ReplaceFirstFiveRoads(); // Заменяем первые 5 дорог
+            isReviveAvailable = false; // Отключаем возможность возрождения
+
+            // Останавливаем корутин, если он ещё работает
+            if (reviveCoroutine != null)
+            {
+                StopCoroutine(reviveCoroutine);
+            }
+        }
+        else
+        {
+            Debug.Log("Недостаточно бананов или время вышло");
+        }
+    }
+
+    // Замена первых 5 дорог на EmptyRoad
+    private void ReplaceFirstFiveRoads()
+    {
+        GameObject spawnerObject = GameObject.Find("Spawner");
+        RoadSpawner roadSpawner = spawnerObject.GetComponent<RoadSpawner>();
+        roadSpawner.ReplaceRoadsWithEmptySegments();
+
+        Debug.Log("Первые 5 дорог заменены на EmptyRoad");
+    }
+
+    #endregion
+
+    private IEnumerator Rollback(ColliderTypes collider)
+    {
+        int timer = 90;
+        while (timer > 0)
+        {
+            if (collider == ColliderTypes.Water)
+            {
+                if (timer > 5) roadSpeed = 0;
+                else roadSpeed = -10;
+                timer--;
+                yield return null;
+            }
+            else if (collider == ColliderTypes.Animal)
+            {
+                roadSpeed = -2;
+                timer--;
+                yield return null;
+            }
+            else if (collider == ColliderTypes.Rock)
+            {
+                roadSpeed = -4;
+                timer--;
+                yield return null;
+            }
+        }
+        roadSpeed = 0;
+    }
+
+}
+
+public enum ColliderTypes
+{
+    Animal,
+    Rock, 
+    Water,
 }

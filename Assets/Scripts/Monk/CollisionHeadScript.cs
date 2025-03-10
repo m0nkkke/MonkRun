@@ -17,18 +17,20 @@ public class CollisionHeadScript : SoundsScript
             print("Spider");
             GameSoundManager.Instance.TriggerHitSound();
             collision.collider.enabled = false;
-            GameManager.Instance.roadSpeed = 0;
+            //GameManager.Instance.roadSpeed = 0;
             animator.Play("UmirOtKringa", -1, 0f);
-            GameManager.Instance.ResetGame();
+            GameManager.Instance.OnMonkCollision(ColliderTypes.Animal);
+            //GameManager.Instance.ResetGame();
         }
         else if (collision.gameObject.tag == "Fly")
         {
             print("Fly");
             GameSoundManager.Instance.TriggerHitSound();
             collision.collider.enabled = false;
-            GameManager.Instance.roadSpeed = 0;
+            //GameManager.Instance.roadSpeed = 0;
             animator.Play("UmirOtKringa", -1, 0f);
-            GameManager.Instance.ResetGame();
+            GameManager.Instance.OnMonkCollision(ColliderTypes.Animal);
+            //GameManager.Instance.ResetGame();
         }
     }
 }

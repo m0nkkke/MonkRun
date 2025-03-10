@@ -19,6 +19,8 @@ public class RoadSpawner : MonoBehaviour
     [SerializeField] private List<GameObject> PitRoads;
     [SerializeField] private List<GameObject> MushroomRoads;
 
+    public List<GameObject> AllRoads = new List<GameObject>();
+
     private float coefEmpty = 5f;
     private float coefRock = 25f;
     private float coefBanana = 15f;
@@ -47,6 +49,7 @@ public class RoadSpawner : MonoBehaviour
             .ToList();
         if (mushrooms) roads = roads.Concat(MushroomRoads).ToList();
         road = Instantiate(roads[Random.Range(0, roads.Count)], transform.position, Quaternion.identity);
+        AllRoads.Add(road);
         //posEmptySpawnTrigger = GameManager.Instance.StepsSpeedIncrease.Select(x => (x - 10)).ToList();
     }
 
@@ -109,6 +112,7 @@ public class RoadSpawner : MonoBehaviour
         {
             Vector3 pos = new Vector3(road.transform.position.x + roadLen, road.transform.position.y, road.transform.position.z);
             road = Instantiate(roadList[Random.Range(0, roadList.Count)], pos, Quaternion.identity);
+            AllRoads.Add(road);
         }
     }
 
@@ -145,6 +149,43 @@ public class RoadSpawner : MonoBehaviour
 
         // Если что-то пошло не так, возвращаем пустой сегмент
         return CategorySegment.Empty;
+    }
+
+    public void ReplaceRoadsWithEmptySegments()
+    {
+        // Проверяем, что листы не пустые
+        if (AllRoads == null || EmptyRoads == null || EmptyRoads.Count == 0)
+        {
+            Debug.LogError("Листы roads или emptyRoads не заполнены!");
+            return;
+        }
+
+        // Проходим по элементам с индексами от 2 до 6
+        for (int i = 2; i <= 6; i++)
+        {
+            if (i < AllRoads.Count && AllRoads[i] != null)
+            {
+                // Сохраняем позицию и вращение текущей дороги
+                Vector3 position = AllRoads[i].transform.position;
+                Quaternion rotation = AllRoads[i].transform.rotation;
+
+                // Уничтожаем текущую дорогу
+                Destroy(AllRoads[i]);
+
+                // Выбираем случайный сегмент из листа emptyRoads
+                GameObject randomEmptyRoad = EmptyRoads[Random.Range(0, EmptyRoads.Count)];
+
+                // Создаём новый сегмент на месте старой дороги
+                GameObject newSegment = Instantiate(randomEmptyRoad, position, rotation);
+
+                // Обновляем лист roads
+                AllRoads[i] = newSegment;
+            }
+            else
+            {
+                Debug.LogWarning($"Индекс {i} выходит за пределы листа roads или дорога равна null.");
+            }
+        }
     }
 
 
