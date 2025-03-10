@@ -39,7 +39,7 @@ public class CollisionScript : MonoBehaviour
             case "MushroomDN":
                 flagDestroy = true;
                 GameSoundManager.Instance.TriggerMushroomSound();
-                StartCoroutine(SwipeDayNight());
+                GameManager.Instance.mushroomDNCoroutine = StartCoroutine(SwipeDayNight());
                 break;
             case "MushroomB":
                 flagDestroy = true;
@@ -54,11 +54,13 @@ public class CollisionScript : MonoBehaviour
             case "MushroomS":
                 GameSoundManager.Instance.TriggerMushroomSound();
                 flagDestroy = true;
-                StartCoroutine(ReduceSpeedTemporarily());
+                GameManager.Instance.mushroomSpeedCoroutine = StartCoroutine(ReduceSpeedTemporarily());
                 break;
         }
         if (flagDestroy) Destroy(other.gameObject);
     }
+    private int diffSpeed = 0;
+    public Coroutine reduceCoroutine;
     private IEnumerator ReduceSpeedTemporarily()
     {
         // Меняем звук
@@ -71,7 +73,7 @@ public class CollisionScript : MonoBehaviour
         // Сохраняем исходную скорость
         int originalSpeed = GameManager.Instance.roadSpeed;
         int speed = 6;
-        int diff = originalSpeed - speed;
+        diffSpeed = originalSpeed - speed;
         int speedReductionDuration = 15;
 
         // Уменьшаем скорость дороги
@@ -81,9 +83,15 @@ public class CollisionScript : MonoBehaviour
         yield return new WaitForSeconds(speedReductionDuration);
 
         // Возвращаем исходную скорость
+        resetS();
+    }
+    public void resetS()
+    {
         if (GameManager.Instance.isRunning)
         {
-            GameManager.Instance.roadSpeed += diff;
+            GameManager.Instance.roadSpeed += diffSpeed;
+            GameObject monk = GameObject.Find("monkWithColider");
+            GameSoundManager GSM = monk.GetComponent<GameSoundManager>();
             GSM.Normal.TransitionTo(1.5f);
         }
     }
@@ -94,12 +102,14 @@ public class CollisionScript : MonoBehaviour
 
         yield return new WaitForSeconds(time);
 
-        GameManager.Instance.CoefBanana -= 1;
+        if (GameManager.Instance.CoefBanana >= 2)
+            GameManager.Instance.CoefBanana -= 1;
     }
     private void ReduceBananas()
     {
         GameManager.Instance.Bananas /= 2;
     }
+    private int startStep;
     private IEnumerator SwipeDayNight()
     {
         GameObject monk = GameObject.Find("monkWithColider");
@@ -109,7 +119,7 @@ public class CollisionScript : MonoBehaviour
 
         int time = 10;
         int curTime = 0;
-        int startStep = GameManager.Instance.nextScoreThreshold;
+        startStep = GameManager.Instance.nextScoreThreshold;
         GameManager.Instance.invertMovement = true;
         while (curTime <= time)
         {
@@ -118,6 +128,12 @@ public class CollisionScript : MonoBehaviour
             yield return new WaitForSeconds(1);
         }
 
+        resetDN();
+    }
+    public void resetDN()
+    {
+        GameObject monk = GameObject.Find("monkWithColider");
+        GameSoundManager GSM = monk.GetComponent<GameSoundManager>();
         GSM.Normal.TransitionTo(1.5f);
 
         GameManager.Instance.nextScoreThreshold = startStep;
