@@ -189,7 +189,12 @@ public class GameManager : MonoBehaviour
         CostRevive = START_COST_REVIVE;
         invertMovement = false;
         isRunning = true;
-    }
+        isReviveAvailable = false;
+        if (pause != null) pause.SetActive(true);
+        if (rollbackCoroutine != null) StopCoroutine(rollbackCoroutine);
+        mushroomDNCoroutine = null;
+        mushroomSpeedCoroutine = null;
+    } 
 
     public void UpdateSpeed()
     {
@@ -217,13 +222,34 @@ public class GameManager : MonoBehaviour
     private bool isReviveAvailable = false; // Доступно ли возрождение
     private Coroutine reviveCoroutine; // Ссылка на корутин
     private int lastSpeed = 0;
-    private const int START_COST_REVIVE = 500;
+    private const int START_COST_REVIVE = 50000;
     private int CostRevive = START_COST_REVIVE;
-    
+    private GameObject pause;
+
+    public Coroutine mushroomSpeedCoroutine;
+    public Coroutine mushroomDNCoroutine;
+    private Coroutine rollbackCoroutine;
+
     public void OnMonkCollision(ColliderTypes collider)
     {
+        if (mushroomSpeedCoroutine != null)
+        {
+            StopCoroutine(mushroomSpeedCoroutine);
+            GameObject monk = GameObject.FindWithTag("BackMonk");
+            CollisionScript collisionScript = monk.GetComponent<CollisionScript>();
+            collisionScript.resetS();
+        }
+        if (mushroomDNCoroutine != null)
+        {
+            StopCoroutine(mushroomDNCoroutine);
+            GameObject monk = GameObject.FindWithTag("BackMonk");
+            CollisionScript collisionScript = monk.GetComponent<CollisionScript>();
+            collisionScript.resetDN();
+        }
         lastSpeed = roadSpeed;
-        StartCoroutine(Rollback(collider));
+        pause = GameObject.Find("PauseButton");
+        pause.SetActive(false);
+        rollbackCoroutine = StartCoroutine(Rollback(collider));
         if (gameData.AllBananas < CostRevive)
         {
             ResetGame();
@@ -240,7 +266,7 @@ public class GameManager : MonoBehaviour
     // Корутин для таймера возрождения
     private IEnumerator ReviveTimer()
     {
-        float reviveTimer = 10f; // 5 секунд на возрождение
+        float reviveTimer = 1f; // 5 секунд на возрождение
 
         while (reviveTimer > 0)
         {
@@ -270,11 +296,15 @@ public class GameManager : MonoBehaviour
             monkeyController.PlayAnimation("Running");
             ReplaceFirstFiveRoads(); // Заменяем первые 5 дорог
             isReviveAvailable = false; // Отключаем возможность возрождения
+            pause.SetActive(true);
+            mushroomDNCoroutine = null;
+            mushroomSpeedCoroutine = null;
 
             // Останавливаем корутин, если он ещё работает
             if (reviveCoroutine != null)
             {
                 StopCoroutine(reviveCoroutine);
+                StopCoroutine(rollbackCoroutine);
             }
         }
         else
@@ -303,7 +333,7 @@ public class GameManager : MonoBehaviour
             if (collider == ColliderTypes.Water)
             {
                 if (timer > 5) roadSpeed = 0;
-                else roadSpeed = -10;
+                else roadSpeed = -20;
                 timer--;
                 yield return null;
             }
