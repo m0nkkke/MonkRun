@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3391268146563862363}
   m_Layer: 0
-  m_Name: RockV1(composite collier)
+  m_Name: RockV1(composite collider)
   m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -17,9 +17,11 @@ public class CollisionScript : SoundsScript
             print("Rock");
             GameSoundManager.Instance.TriggerHitSound();
             collision.collider.enabled = false;
-            GameManager.Instance.roadSpeed = 0;
+            //GameManager.Instance.roadSpeed = 0;
             animator.Play("Hit On Legs", -1, 0f);
-            GameManager.Instance.ResetGame();
+
+            GameManager.Instance.OnMonkCollision(ColliderTypes.Rock);
+            //GameManager.Instance.ResetGame();
         }
     }
 
@@ -56,28 +58,6 @@ public class CollisionScript : SoundsScript
                 break;
         }
         if (flagDestroy) Destroy(other.gameObject);
-
-        //if (other.gameObject.tag == "Banana")
-        //{
-        //    GameManager.Instance.Bananas += 1;
-        //    PlaySound(sounds[0], volume: 0.2f);
-        //    Destroy(other.gameObject);
-        //}
-        //else if (other.gameObject.tag == "MushroomDN")
-        //{
-            
-        //}
-    }
-    private void Update()
-    {
-        //if (GameManager.Instance.Score > 10)
-        //{
-        //    GameManager.Instance.roadSpeed = 10;
-        //}
-        //else if (GameManager.Instance.Score < 10 && GameManager.Instance.roadSpeed == 10)
-        //{
-        //    GameManager.Instance.roadSpeed = 8;
-        //}
     }
     private IEnumerator ReduceSpeedTemporarily()
     {
@@ -124,10 +104,6 @@ public class CollisionScript : SoundsScript
         }
         GameManager.Instance.nextScoreThreshold = startStep;
         GameManager.Instance.invertMovement = false;
-        // Тут надо вызвать быструю смену дня и ночи
-        // если это какой то кэф то просто изменить
-        // если функция то можно в цикл бахнуть
-        print("swipe");
     }
 
 }

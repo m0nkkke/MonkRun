@@ -26,6 +26,9 @@ public class Road : MonoBehaviour
     {
         if (transform.position.x < -15f)
         {
+            GameObject spawnerObject = GameObject.Find("Spawner");
+            RoadSpawner roadSpawner = spawnerObject.GetComponent<RoadSpawner>();
+            roadSpawner.AllRoads.RemoveAt(0);
             Destroy(gameObject);
         }
     }

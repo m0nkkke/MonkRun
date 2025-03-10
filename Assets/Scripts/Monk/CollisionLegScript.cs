@@ -16,18 +16,20 @@ public class CollisionLegScript : SoundsScript
             //print("Pit");
             GameSoundManager.Instance.TriggerHitSound();
             other.enabled = false;
-            GameManager.Instance.roadSpeed = 0;
+            //GameManager.Instance.roadSpeed = 0;
             animator.Play("Sweep Fall", -1, 0f);
-            GameManager.Instance.ResetGame();
+            GameManager.Instance.OnMonkCollision(ColliderTypes.Water);
+            //GameManager.Instance.ResetGame();
         }
         else if (other.gameObject.name == "RiverTrigger")
         {
             //print("River");
             GameSoundManager.Instance.TriggerHitSound();
             other.enabled = false;
-            GameManager.Instance.roadSpeed = 0;
+            //GameManager.Instance.roadSpeed = 0;
             animator.Play("Sweep Fall", -1, 0f);
-            GameManager.Instance.ResetGame();
+            GameManager.Instance.OnMonkCollision(ColliderTypes.Water);
+            //GameManager.Instance.ResetGame();
 
         }
     }

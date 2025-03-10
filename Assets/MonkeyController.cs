@@ -41,7 +41,7 @@ public class MonkeyController : MonoBehaviour
         }
     }
 
-    private void PlayAnimation(string animationName)
+    public void PlayAnimation(string animationName)
     {
         animator.Play(animationName, 0, 0);
     }
