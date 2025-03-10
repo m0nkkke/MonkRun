@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollisionScript : SoundsScript
+public class CollisionScript : MonoBehaviour
 {
     private Animator animator;
     private void Start()
@@ -61,6 +61,13 @@ public class CollisionScript : SoundsScript
     }
     private IEnumerator ReduceSpeedTemporarily()
     {
+        // Меняем звук
+
+        GameObject monk = GameObject.Find("monkWithColider");
+        GameSoundManager GSM = monk.GetComponent<GameSoundManager>();
+
+        GSM.MushroomS.TransitionTo(1.5f);
+
         // Сохраняем исходную скорость
         int originalSpeed = GameManager.Instance.roadSpeed;
         int speed = 6;
@@ -75,7 +82,10 @@ public class CollisionScript : SoundsScript
 
         // Возвращаем исходную скорость
         if (GameManager.Instance.isRunning)
+        {
             GameManager.Instance.roadSpeed += diff;
+            GSM.Normal.TransitionTo(1.5f);
+        }
     }
     private IEnumerator IncreaseBananaCoef()
     {
@@ -92,6 +102,11 @@ public class CollisionScript : SoundsScript
     }
     private IEnumerator SwipeDayNight()
     {
+        GameObject monk = GameObject.Find("monkWithColider");
+        GameSoundManager GSM = monk.GetComponent<GameSoundManager>();
+
+        GSM.MushroomDN.TransitionTo(1.5f);
+
         int time = 10;
         int curTime = 0;
         int startStep = GameManager.Instance.nextScoreThreshold;
@@ -102,6 +117,9 @@ public class CollisionScript : SoundsScript
             curTime += 1;
             yield return new WaitForSeconds(1);
         }
+
+        GSM.Normal.TransitionTo(1.5f);
+
         GameManager.Instance.nextScoreThreshold = startStep;
         GameManager.Instance.invertMovement = false;
     }

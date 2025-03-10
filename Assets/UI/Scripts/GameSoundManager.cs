@@ -25,6 +25,11 @@ public class GameSoundManager : MonoBehaviour
 
     public AudioClip backgroundMusic;
 
+    public AudioMixerSnapshot Normal;
+    public AudioMixerSnapshot Pause;
+    public AudioMixerSnapshot MushroomDN;
+    public AudioMixerSnapshot MushroomS;
+
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -80,16 +85,16 @@ public class GameSoundManager : MonoBehaviour
 
     public void TriggerJumpSound()
     {
-        OnJump?.Invoke(); // Вызов события прыжка
+        OnJump?.Invoke();
     }
 
     public void TriggerCrouchSound()
     {
-        OnCrouch?.Invoke(); // Вызов события приседания
+        OnCrouch?.Invoke(); 
     }
     public void TriggerHitSound()
     {
-        OnHit?.Invoke(); // Вызов события удара
+        OnHit?.Invoke(); 
     }
 
     public void TriggerBananaSound()
