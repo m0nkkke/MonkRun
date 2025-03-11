@@ -327,31 +327,53 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator Rollback(ColliderTypes collider)
     {
-        int timer = 90;
-        while (timer > 0)
+        float rollbackTime = 0.5f; // Время отката назад в секундах
+        float elapsedTime = 0f;
+        int initialSpeed = roadSpeed;
+        int targetSpeed = 0;
+
+        switch (collider)
         {
-            if (collider == ColliderTypes.Water)
-            {
-                if (timer > 5) roadSpeed = 0;
-                else roadSpeed = -20;
-                timer--;
-                yield return null;
-            }
-            else if (collider == ColliderTypes.Animal)
-            {
-                roadSpeed = -2;
-                timer--;
-                yield return null;
-            }
-            else if (collider == ColliderTypes.Rock)
-            {
-                roadSpeed = -4;
-                timer--;
-                yield return null;
-            }
+            case ColliderTypes.Water:
+                targetSpeed = -4;
+                break;
+            case ColliderTypes.Animal:
+                targetSpeed = -4;
+                break;
+            case ColliderTypes.Rock:
+                targetSpeed = -4;
+                rollbackTime = 0.6f;
+                break;
         }
+
+        // Если вода, делаем паузу перед откатом
+        if (collider == ColliderTypes.Water)
+        {
+            roadSpeed = 0;
+            yield return new WaitForSeconds(0.8f);
+        }
+
+        // Плавный откат назад
+        while (elapsedTime < rollbackTime)
+        {
+            elapsedTime += Time.deltaTime;
+            roadSpeed = Mathf.RoundToInt(Mathf.Lerp(0, targetSpeed, elapsedTime / rollbackTime));
+            yield return null;
+        }
+
+        // Постепенное возвращение к 0
+        elapsedTime = 0;
+        initialSpeed = roadSpeed;
+        while (elapsedTime < rollbackTime)
+        {
+            elapsedTime += Time.deltaTime;
+            roadSpeed = Mathf.RoundToInt(Mathf.Lerp(initialSpeed, 0, elapsedTime / rollbackTime));
+            yield return null;
+        }
+
         roadSpeed = 0;
     }
+
 
 }
 

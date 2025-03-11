@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Road : MonoBehaviour
 {
-    //[SerializeField] private float _speed = 5;
-
     private void Update()
     {
         DestroyRoad();
