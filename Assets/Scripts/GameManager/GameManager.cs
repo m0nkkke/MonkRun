@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 public class GameData
 {
     public int MaxScore = 0;
+    // какие максБананас
     public int MaxBananas = 0;
     public int AllBananas = 0;
 }
@@ -62,6 +63,7 @@ public class GameManager : MonoBehaviour
 
     public void ResetGame()
     {
+        isRunning = false;
         try
         {
             Save();
@@ -72,9 +74,6 @@ public class GameManager : MonoBehaviour
         {
             StartCoroutine(ShowMenuLoseSmooth()); // Запускаем плавную анимацию появления
         }
-
-        isRunning = false;
-        //roadSpeed = 0;
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -222,8 +221,8 @@ public class GameManager : MonoBehaviour
     private bool isReviveAvailable = false; // Доступно ли возрождение
     private Coroutine reviveCoroutine; // Ссылка на корутин
     private int lastSpeed = 0;
-    private const int START_COST_REVIVE = 50000;
-    private int CostRevive = START_COST_REVIVE;
+    private const int START_COST_REVIVE = 1;
+    public int CostRevive = START_COST_REVIVE;
     private GameObject pause;
 
     public Coroutine mushroomSpeedCoroutine;
@@ -250,6 +249,7 @@ public class GameManager : MonoBehaviour
         pause = GameObject.Find("PauseButton");
         pause.SetActive(false);
         rollbackCoroutine = StartCoroutine(Rollback(collider));
+
         if (gameData.AllBananas < CostRevive)
         {
             ResetGame();
