@@ -39,6 +39,11 @@ public class CollisionScript : MonoBehaviour
             case "MushroomDN":
                 flagDestroy = true;
                 GameSoundManager.Instance.TriggerMushroomSound();
+                if (GameManager.Instance.mushroomDNCoroutine != null)
+                {
+                    StopCoroutine(GameManager.Instance.mushroomDNCoroutine);
+                    resetDN();
+                }
                 GameManager.Instance.mushroomDNCoroutine = StartCoroutine(SwipeDayNight());
                 break;
             case "MushroomB":
@@ -54,13 +59,17 @@ public class CollisionScript : MonoBehaviour
             case "MushroomS":
                 GameSoundManager.Instance.TriggerMushroomSound();
                 flagDestroy = true;
+                if (GameManager.Instance.mushroomSpeedCoroutine != null)
+                {
+                    StopCoroutine(GameManager.Instance.mushroomSpeedCoroutine);
+                    resetS();
+                }
                 GameManager.Instance.mushroomSpeedCoroutine = StartCoroutine(ReduceSpeedTemporarily());
                 break;
         }
         if (flagDestroy) Destroy(other.gameObject);
     }
     private int diffSpeed = 0;
-    public Coroutine reduceCoroutine;
     private IEnumerator ReduceSpeedTemporarily()
     {
         // Меняем звук
@@ -74,7 +83,7 @@ public class CollisionScript : MonoBehaviour
         int originalSpeed = GameManager.Instance.roadSpeed;
         int speed = 6;
         diffSpeed = originalSpeed - speed;
-        int speedReductionDuration = 15;
+        int speedReductionDuration = 10;
 
         // Уменьшаем скорость дороги
         GameManager.Instance.roadSpeed = speed;
@@ -93,6 +102,7 @@ public class CollisionScript : MonoBehaviour
             GameObject monk = GameObject.Find("monkWithColider");
             GameSoundManager GSM = monk.GetComponent<GameSoundManager>();
             GSM.Normal.TransitionTo(1.5f);
+            GameManager.Instance.mushroomSpeedCoroutine = null;
         }
     }
     private IEnumerator IncreaseBananaCoef()
@@ -138,6 +148,8 @@ public class CollisionScript : MonoBehaviour
 
         GameManager.Instance.nextScoreThreshold = startStep;
         GameManager.Instance.invertMovement = false;
+
+        GameManager.Instance.mushroomDNCoroutine = null;
     }
 
 }

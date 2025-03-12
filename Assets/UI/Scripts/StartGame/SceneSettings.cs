@@ -42,4 +42,11 @@ public class SceneSettings : MonoBehaviour
         SceneManager.LoadScene(0);
         Time.timeScale = 1f;
     }
+    public void Revive()
+    {
+        menuLose = GameObject.Find("MenuLose");
+        menuLose.SetActive(false);
+        GameManager.Instance.Revive();
+        Time.timeScale = 1f;
+    }
 }
