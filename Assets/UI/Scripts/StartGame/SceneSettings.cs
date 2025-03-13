@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneSettings : MonoBehaviour
 {
     public GameObject PausePanel;
+    public GameObject LosePanel;
     public GameObject menuLose;
     public GameSoundManager GSM;
 
@@ -34,6 +35,10 @@ public class SceneSettings : MonoBehaviour
 
         GameManager.Instance.Restart();
     }
+    //public void LoseButton()
+    //{
+    //    menuRevive = GameObject.Find("MenuRevive")
+    //}
     public void ExitInMenu()
     {
         GSM.Normal.TransitionTo(1.5f);

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class GameData
@@ -224,6 +225,7 @@ public class GameManager : MonoBehaviour
     private const int START_COST_REVIVE = 1;
     public int CostRevive = START_COST_REVIVE;
     private GameObject pause;
+    private GameObject reviveMenu;
 
     public Coroutine mushroomSpeedCoroutine;
     public Coroutine mushroomDNCoroutine;
@@ -266,14 +268,15 @@ public class GameManager : MonoBehaviour
     // Корутин для таймера возрождения
     private IEnumerator ReviveTimer()
     {
-        float reviveTimer = 1f; // 5 секунд на возрождение
+        reviveMenu.SetActive(true);
+        float reviveTimer = 5f; // 5 секунд на возрождение
 
         while (reviveTimer > 0)
         {
             reviveTimer -= Time.deltaTime;
             yield return null; // Ждём один кадр
         }
-
+        reviveMenu.SetActive(false);
         // Если время вышло, сбрасываем игру
         if (isReviveAvailable)
         {
@@ -287,6 +290,7 @@ public class GameManager : MonoBehaviour
     {
         if (isReviveAvailable && gameData.AllBananas >= CostRevive)
         {
+            reviveMenu.SetActive(false);
             gameData.AllBananas -= CostRevive; // Отнимаем 1 банан
             CostRevive *= 2;
             roadSpeed = lastSpeed;
