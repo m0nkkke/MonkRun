@@ -64,11 +64,6 @@ public class GameManager : MonoBehaviour
     public void ResetGame()
     {
         isRunning = false;
-        try
-        {
-            Save();
-        }
-        catch { }
 
         if (menuLose != null)
         {
@@ -173,6 +168,11 @@ public class GameManager : MonoBehaviour
     [ContextMenu("Restart")]
     public void Restart()
     {
+        try
+        {
+            Save();
+        }
+        catch { }
         // Получаем индекс текущей сцены
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
    
