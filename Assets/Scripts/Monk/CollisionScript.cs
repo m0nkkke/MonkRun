@@ -91,12 +91,17 @@ public class CollisionScript : MonoBehaviour
         int speed = 6;
         diffSpeed = originalSpeed - speed;
         int speedReductionDuration = 10;
+        GameManager.Instance.timerMushroomS = speedReductionDuration + 1;
+        GameManager.Instance.textTimerMushroomS.SetActive(true);
 
         // Уменьшаем скорость дороги
         GameManager.Instance.roadSpeed = speed;
-
+        while (GameManager.Instance.timerMushroomS > 0)
+        {
+            GameManager.Instance.timerMushroomS--;
+            yield return new WaitForSeconds(1);
+        }
         // Ждём 15 секунд
-        yield return new WaitForSeconds(speedReductionDuration);
 
         // Возвращаем исходную скорость
         resetS();
@@ -110,6 +115,8 @@ public class CollisionScript : MonoBehaviour
             GameSoundManager GSM = monk.GetComponent<GameSoundManager>();
             GSM.Normal.TransitionTo(1.5f);
             GameManager.Instance.mushroomSpeedCoroutine = null;
+            GameManager.Instance.textTimerMushroomS.SetActive(false);
+            GameManager.Instance.timerMushroomS = 0;
         }
     }
     private IEnumerator IncreaseBananaCoef()
@@ -135,13 +142,15 @@ public class CollisionScript : MonoBehaviour
         GSM.MushroomDN.TransitionTo(1.5f);
 
         int time = 10;
-        int curTime = 0;
+        //int curTime = 0;
+        GameManager.Instance.timerMushroomDN = time + 1;
+        GameManager.Instance.textTimerMushroomDN.SetActive(true);
         startStep = GameManager.Instance.nextScoreThreshold;
         GameManager.Instance.invertMovement = true;
-        while (curTime <= time)
+        while (GameManager.Instance.timerMushroomDN > 0)
         {
             GameManager.Instance.nextScoreThreshold = 1;
-            curTime += 1;
+            GameManager.Instance.timerMushroomDN--;
             yield return new WaitForSeconds(1);
         }
 
@@ -157,6 +166,8 @@ public class CollisionScript : MonoBehaviour
         GameManager.Instance.invertMovement = false;
 
         GameManager.Instance.mushroomDNCoroutine = null;
+        GameManager.Instance.textTimerMushroomDN.SetActive(false);
+        GameManager.Instance.timerMushroomDN = 0;
     }
 
 }

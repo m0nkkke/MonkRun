@@ -928,6 +928,9 @@ MonoBehaviour:
     MaxBananas: 0
     AllBananas: 0
   CostRevive: 1
+  timerMushroomDN: 0
+  timerMushroomB: 0
+  timerMushroomS: 0
 --- !u!4 &1273920478
 Transform:
   m_ObjectHideFlags: 0

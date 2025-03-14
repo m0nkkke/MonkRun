@@ -81,6 +81,7 @@ public class GameManager : MonoBehaviour
         FindMenuLose();
         FindMenuRevive();
         bananasText = GameObject.Find("BananaText");
+        FindMushroomTimers();
     }
     private void FindMenuRevive()
     {
@@ -101,7 +102,25 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-
+    private void FindMushroomTimers()
+    {
+        if (textTimerMushroomDN == null)
+        {
+            GameObject parentObject = GameObject.Find("CanvasPause");
+            if (parentObject != null)
+            {
+                textTimerMushroomDN = parentObject.transform.Find("TimerMushroomDN")?.gameObject;
+            }
+        }
+        if (textTimerMushroomS == null)
+        {
+            GameObject parentObject = GameObject.Find("CanvasPause");
+            if (parentObject != null)
+            {
+                textTimerMushroomS = parentObject.transform.Find("TimerMushroomS")?.gameObject;
+            }
+        }
+    }
     private void FindMenuLose()
     {
         if (menuLose == null)
@@ -260,18 +279,16 @@ public class GameManager : MonoBehaviour
 
     public void OnMonkCollision(ColliderTypes collider)
     {
+        GameObject monk = GameObject.FindWithTag("BackMonk");
+        CollisionScript collisionScript = monk.GetComponent<CollisionScript>();
         if (mushroomSpeedCoroutine != null)
         {
             StopCoroutine(mushroomSpeedCoroutine);
-            GameObject monk = GameObject.FindWithTag("BackMonk");
-            CollisionScript collisionScript = monk.GetComponent<CollisionScript>();
             collisionScript.resetS();
         }
         if (mushroomDNCoroutine != null)
         {
             StopCoroutine(mushroomDNCoroutine);
-            GameObject monk = GameObject.FindWithTag("BackMonk");
-            CollisionScript collisionScript = monk.GetComponent<CollisionScript>();
             collisionScript.resetDN();
         }
         lastSpeed = roadSpeed;
@@ -318,7 +335,7 @@ public class GameManager : MonoBehaviour
     [ContextMenu("Возрождение")]
     public void Revive()
     {
-        if (isReviveAvailable && gameData.AllBananas >= CostRevive)
+        if (isReviveAvailable && (gameData.AllBananas + Bananas) >= CostRevive)
         {
             // Останавливаем корутин, если он ещё работает
             if (reviveCoroutine != null)
@@ -329,7 +346,16 @@ public class GameManager : MonoBehaviour
             bananasText.SetActive(true);
             allBananasText.SetActive(false);
             reviveMenu.SetActive(false);
-            gameData.AllBananas -= CostRevive; // Отнимаем 1 банан
+
+            // Сначала вычитаем из AllBananas, пока там есть бананы
+            if (gameData.AllBananas > CostRevive) gameData.AllBananas -= CostRevive; // Отнимаем 1 банан
+            else
+            {
+                Bananas = Bananas + gameData.AllBananas - CostRevive;
+                gameData.AllBananas = 0;
+            }
+
+
             CostRevive *= 2;
             roadSpeed = lastSpeed;
             isRunning = true;
@@ -360,6 +386,14 @@ public class GameManager : MonoBehaviour
     }
 
     #endregion
+
+
+    public float timerMushroomDN = 0f;
+    public GameObject textTimerMushroomDN;
+    public float timerMushroomB = 0f;
+    public float timerMushroomS = 0f;
+    public GameObject textTimerMushroomS;
+
 
     private IEnumerator Rollback(ColliderTypes collider)
     {
