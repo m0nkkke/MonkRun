@@ -16,7 +16,14 @@ public class CollisionScript : MonoBehaviour
         {
             print("Rock");
             GameSoundManager.Instance.TriggerHitSound();
-            collision.collider.enabled = false;
+            //collision.collider.enabled = false;
+            Collider[] colliders = collision.gameObject.GetComponents<Collider>();
+
+            // Удаляем все коллайдеры
+            foreach (Collider col in colliders)
+            {
+                Destroy(col);
+            }
             //GameManager.Instance.roadSpeed = 0;
             animator.Play("Hit On Legs", -1, 0f);
 

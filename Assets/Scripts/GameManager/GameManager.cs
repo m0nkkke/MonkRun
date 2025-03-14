@@ -80,6 +80,7 @@ public class GameManager : MonoBehaviour
     {
         FindMenuLose();
         FindMenuRevive();
+        bananasText = GameObject.Find("BananaText");
     }
     private void FindMenuRevive()
     {
@@ -89,6 +90,14 @@ public class GameManager : MonoBehaviour
             if (parentObject != null)
             {
                 reviveMenu = parentObject.transform.Find("MenuRevival")?.gameObject;
+            }
+        }
+        if (allBananasText == null)
+        {
+            GameObject parentObject = GameObject.Find("CanvasPause");
+            if (parentObject != null)
+            {
+                allBananasText = parentObject.transform.Find("AllBananaText")?.gameObject;
             }
         }
     }
@@ -242,6 +251,8 @@ public class GameManager : MonoBehaviour
     public int CostRevive = START_COST_REVIVE;
     private GameObject pause;
     private GameObject reviveMenu;
+    private GameObject allBananasText;
+    private GameObject bananasText;
 
     public Coroutine mushroomSpeedCoroutine;
     public Coroutine mushroomDNCoroutine;
@@ -286,6 +297,8 @@ public class GameManager : MonoBehaviour
     {
         if (reviveMenu != null) print("ReviveMenu");
         reviveMenu.SetActive(true);
+        bananasText.SetActive(false);
+        allBananasText.SetActive(true);
         float reviveTimer = 5f; // 5 секунд на возрождение
 
         while (reviveTimer > 0)
@@ -313,6 +326,8 @@ public class GameManager : MonoBehaviour
                 StopCoroutine(reviveCoroutine);
                 StopCoroutine(rollbackCoroutine);
             }
+            bananasText.SetActive(true);
+            allBananasText.SetActive(false);
             reviveMenu.SetActive(false);
             gameData.AllBananas -= CostRevive; // Отнимаем 1 банан
             CostRevive *= 2;

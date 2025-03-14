@@ -10,6 +10,6 @@ public class RecordScoreDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        scoreText.text = GameManager.Instance.gameData.MaxScore.ToString();
+        scoreText.text = GameManager.Instance.gameData.MaxScore.ToString() + "ì";
     }
 }
