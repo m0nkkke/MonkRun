@@ -28,7 +28,7 @@ public class RoadSpawner : MonoBehaviour
     private float coefSpider = 10f;
     private float coefRiver = 5f;
     private float coefPit = 10f;
-    private float coefMushroom = 500f;
+    private float coefMushroom = 5f;
 
     private GameObject road;
 
