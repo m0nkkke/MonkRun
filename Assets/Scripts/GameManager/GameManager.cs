@@ -64,6 +64,10 @@ public class GameManager : MonoBehaviour
 
     public void ResetGame()
     {
+        if (reviveCoroutine != null)
+        {
+            StopCoroutine(reviveCoroutine);
+        }
         isRunning = false;
 
         if (menuLose != null)
@@ -75,6 +79,27 @@ public class GameManager : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         FindMenuLose();
+        FindMenuRevive();
+        bananasText = GameObject.Find("BananaText");
+    }
+    private void FindMenuRevive()
+    {
+        if (reviveMenu == null)
+        {
+            GameObject parentObject = GameObject.Find("CanvasPause");
+            if (parentObject != null)
+            {
+                reviveMenu = parentObject.transform.Find("MenuRevival")?.gameObject;
+            }
+        }
+        if (allBananasText == null)
+        {
+            GameObject parentObject = GameObject.Find("CanvasPause");
+            if (parentObject != null)
+            {
+                allBananasText = parentObject.transform.Find("AllBananaText")?.gameObject;
+            }
+        }
     }
 
     private void FindMenuLose()
@@ -226,6 +251,8 @@ public class GameManager : MonoBehaviour
     public int CostRevive = START_COST_REVIVE;
     private GameObject pause;
     private GameObject reviveMenu;
+    private GameObject allBananasText;
+    private GameObject bananasText;
 
     public Coroutine mushroomSpeedCoroutine;
     public Coroutine mushroomDNCoroutine;
@@ -268,7 +295,10 @@ public class GameManager : MonoBehaviour
     // Корутин для таймера возрождения
     private IEnumerator ReviveTimer()
     {
+        if (reviveMenu != null) print("ReviveMenu");
         reviveMenu.SetActive(true);
+        bananasText.SetActive(false);
+        allBananasText.SetActive(true);
         float reviveTimer = 5f; // 5 секунд на возрождение
 
         while (reviveTimer > 0)
@@ -290,6 +320,14 @@ public class GameManager : MonoBehaviour
     {
         if (isReviveAvailable && gameData.AllBananas >= CostRevive)
         {
+            // Останавливаем корутин, если он ещё работает
+            if (reviveCoroutine != null)
+            {
+                StopCoroutine(reviveCoroutine);
+                StopCoroutine(rollbackCoroutine);
+            }
+            bananasText.SetActive(true);
+            allBananasText.SetActive(false);
             reviveMenu.SetActive(false);
             gameData.AllBananas -= CostRevive; // Отнимаем 1 банан
             CostRevive *= 2;
@@ -304,12 +342,6 @@ public class GameManager : MonoBehaviour
             mushroomDNCoroutine = null;
             mushroomSpeedCoroutine = null;
 
-            // Останавливаем корутин, если он ещё работает
-            if (reviveCoroutine != null)
-            {
-                StopCoroutine(reviveCoroutine);
-                StopCoroutine(rollbackCoroutine);
-            }
         }
         else
         {

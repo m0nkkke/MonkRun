@@ -8,6 +8,7 @@ public class SceneSettings : MonoBehaviour
     public GameObject PausePanel;
     public GameObject LosePanel;
     public GameObject menuLose;
+    public GameObject menuRevival;
     public GameSoundManager GSM;
 
     public void Start()
@@ -49,9 +50,15 @@ public class SceneSettings : MonoBehaviour
     }
     public void Revive()
     {
-        menuLose = GameObject.Find("MenuLose");
-        menuLose.SetActive(false);
+        menuRevival = GameObject.Find("MenuRevival");
+        menuRevival.SetActive(false);
         GameManager.Instance.Revive();
         Time.timeScale = 1f;
+    }
+    public void ToLoseMenu()
+    {
+        menuRevival = GameObject.Find("MenuRevival");
+        menuRevival.SetActive(false);
+        GameManager.Instance.ResetGame();
     }
 }
