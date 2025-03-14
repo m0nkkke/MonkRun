@@ -64,6 +64,10 @@ public class GameManager : MonoBehaviour
 
     public void ResetGame()
     {
+        if (reviveCoroutine != null)
+        {
+            StopCoroutine(reviveCoroutine);
+        }
         isRunning = false;
 
         if (menuLose != null)
@@ -75,6 +79,18 @@ public class GameManager : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         FindMenuLose();
+        FindMenuRevive();
+    }
+    private void FindMenuRevive()
+    {
+        if (reviveMenu == null)
+        {
+            GameObject parentObject = GameObject.Find("CanvasPause");
+            if (parentObject != null)
+            {
+                reviveMenu = parentObject.transform.Find("MenuRevival")?.gameObject;
+            }
+        }
     }
 
     private void FindMenuLose()
@@ -268,6 +284,7 @@ public class GameManager : MonoBehaviour
     // Корутин для таймера возрождения
     private IEnumerator ReviveTimer()
     {
+        if (reviveMenu != null) print("ReviveMenu");
         reviveMenu.SetActive(true);
         float reviveTimer = 5f; // 5 секунд на возрождение
 
@@ -290,6 +307,12 @@ public class GameManager : MonoBehaviour
     {
         if (isReviveAvailable && gameData.AllBananas >= CostRevive)
         {
+            // Останавливаем корутин, если он ещё работает
+            if (reviveCoroutine != null)
+            {
+                StopCoroutine(reviveCoroutine);
+                StopCoroutine(rollbackCoroutine);
+            }
             reviveMenu.SetActive(false);
             gameData.AllBananas -= CostRevive; // Отнимаем 1 банан
             CostRevive *= 2;
@@ -304,12 +327,6 @@ public class GameManager : MonoBehaviour
             mushroomDNCoroutine = null;
             mushroomSpeedCoroutine = null;
 
-            // Останавливаем корутин, если он ещё работает
-            if (reviveCoroutine != null)
-            {
-                StopCoroutine(reviveCoroutine);
-                StopCoroutine(rollbackCoroutine);
-            }
         }
         else
         {

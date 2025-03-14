@@ -893,6 +893,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1273920478}
   - component: {fileID: 1273920477}
+  - component: {fileID: 1273920479}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -942,6 +943,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1273920479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1273920476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc4da626c034f15419af4fc110041f67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MusicMixer: {fileID: 3461289185593617431, guid: d98db8152a14820449b13c6536833fa7, type: 2}
+  SoundsMixer: {fileID: 7169223983787874236, guid: d98db8152a14820449b13c6536833fa7, type: 2}
 --- !u!1 &1284206272
 GameObject:
   m_ObjectHideFlags: 0
@@ -1407,6 +1422,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanvasMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 2298964869860221291, guid: 0e505c555d7aa5745b5ceb460e612601, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 1031593894}
     - target: {fileID: 2303174689268770858, guid: 0e505c555d7aa5745b5ceb460e612601, type: 3}
       propertyPath: m_Camera
       value: 
@@ -1415,9 +1434,41 @@ PrefabInstance:
       propertyPath: m_PlaneDistance
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2502762781249166023, guid: 0e505c555d7aa5745b5ceb460e612601, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 1031593894}
+    - target: {fileID: 2520385284339718232, guid: 0e505c555d7aa5745b5ceb460e612601, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -55.299973
+      objectReference: {fileID: 0}
+    - target: {fileID: 2762685549994039667, guid: 0e505c555d7aa5745b5ceb460e612601, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2762685549994039667, guid: 0e505c555d7aa5745b5ceb460e612601, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4744785463617526299, guid: 0e505c555d7aa5745b5ceb460e612601, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 1031593894}
+    - target: {fileID: 4866597590211608989, guid: 0e505c555d7aa5745b5ceb460e612601, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 1031593894}
+    - target: {fileID: 5408944946141506993, guid: 0e505c555d7aa5745b5ceb460e612601, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 1031593894}
     - target: {fileID: 5879368838467740133, guid: 0e505c555d7aa5745b5ceb460e612601, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -3.4988403
+      objectReference: {fileID: 0}
+    - target: {fileID: 5992692870779514379, guid: 0e505c555d7aa5745b5ceb460e612601, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6941963637953658262, guid: 0e505c555d7aa5745b5ceb460e612601, type: 3}
       propertyPath: m_Pivot.x
@@ -1499,6 +1550,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8049276526778347653, guid: 0e505c555d7aa5745b5ceb460e612601, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 1031593894}
+    - target: {fileID: 8140899846357966500, guid: 0e505c555d7aa5745b5ceb460e612601, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 1031593894}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -588,7 +588,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PausePanel: {fileID: 6749156231854291202}
+  LosePanel: {fileID: 0}
   menuLose: {fileID: 0}
+  menuRevival: {fileID: 0}
   GSM: {fileID: 0}
 --- !u!114 &7243413631055143071
 MonoBehaviour:
@@ -768,7 +770,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &819841770835378043
 RectTransform:
   m_ObjectHideFlags: 0
@@ -927,7 +929,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PausePanel: {fileID: 0}
+  LosePanel: {fileID: 0}
   menuLose: {fileID: 0}
+  menuRevival: {fileID: 0}
   GSM: {fileID: 0}
 --- !u!114 &3352143764414894684
 MonoBehaviour:
@@ -1349,7 +1353,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PausePanel: {fileID: 6749156231854291202}
+  LosePanel: {fileID: 0}
   menuLose: {fileID: 0}
+  menuRevival: {fileID: 0}
   GSM: {fileID: 0}
 --- !u!114 &6704666419229634255
 MonoBehaviour:
@@ -2093,7 +2099,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PausePanel: {fileID: 0}
+  LosePanel: {fileID: 0}
   menuLose: {fileID: 0}
+  menuRevival: {fileID: 0}
   GSM: {fileID: 0}
 --- !u!114 &7105537855107076711
 MonoBehaviour:
@@ -2404,6 +2412,8 @@ GameObject:
   - component: {fileID: 6965662183058629239}
   - component: {fileID: 304343329250646141}
   - component: {fileID: 372667213439903571}
+  - component: {fileID: 4365157115313518192}
+  - component: {fileID: 2784284907320735963}
   m_Layer: 5
   m_Name: BedaButton
   m_TagString: Untagged
@@ -2513,6 +2523,52 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4365157115313518192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5398228453951348612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2784284907320735963}
+          m_TargetAssemblyTypeName: SceneSettings, Assembly-CSharp
+          m_MethodName: ToLoseMenu
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &2784284907320735963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5398228453951348612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48680addcfb7a7c4aa443716d1d3943c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PausePanel: {fileID: 0}
+  LosePanel: {fileID: 0}
+  menuLose: {fileID: 0}
+  menuRevival: {fileID: 0}
+  GSM: {fileID: 0}
 --- !u!1 &5663921685191032518
 GameObject:
   m_ObjectHideFlags: 0
@@ -3325,7 +3381,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -3645,7 +3701,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
