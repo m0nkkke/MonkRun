@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3942872682353154028}
-  - component: {fileID: 8952543278105303552}
   m_Layer: 0
   m_Name: MushroomX2Bananas
   m_TagString: Untagged
@@ -33,27 +32,6 @@ Transform:
   - {fileID: 816336694100409005}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &8952543278105303552
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2878981003495663276}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7e02a9ec0b7a4e94ba2f1f8c07b915b7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &927333160201870662
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -135,6 +113,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 3086666335393643108}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 393e595fc643baf40a6a8e9b48c69ac3,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3593755336169636200}
   m_SourcePrefab: {fileID: 100100000, guid: 393e595fc643baf40a6a8e9b48c69ac3, type: 3}
 --- !u!1 &8977827957891095 stripped
 GameObject:
@@ -163,6 +145,27 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.9, y: 1, z: 0.9}
   m_Center: {x: -0.05, y: 0, z: -0.05}
+--- !u!95 &3593755336169636200
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8977827957891095}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7e02a9ec0b7a4e94ba2f1f8c07b915b7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &816336694100409005 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 393e595fc643baf40a6a8e9b48c69ac3,
