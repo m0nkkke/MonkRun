@@ -9,6 +9,13 @@ TagManager:
   - Road
   - Stone
   - RockCollider
+  - Banana
+  - Spider
+  - Fly
+  - MushroomDN
+  - MushroomMB
+  - MushroomS
+  - MushroomB
   layers:
   - Default
   - TransparentFX
