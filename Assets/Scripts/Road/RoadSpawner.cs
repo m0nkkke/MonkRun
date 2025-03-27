@@ -161,7 +161,7 @@ public class RoadSpawner : MonoBehaviour
         }
 
         // Проходим по элементам с индексами от 2 до 6
-        for (int i = 2; i <= 6; i++)
+        for (int i = 1; i <= 6; i++)
         {
             if (i < AllRoads.Count && AllRoads[i] != null)
             {
