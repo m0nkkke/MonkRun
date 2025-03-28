@@ -1008,6 +1008,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sun
       objectReference: {fileID: 0}
+    - target: {fileID: 8841735447656011473, guid: 3ece9868ddd392e4283f5b48a095ec94, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1307,6 +1311,10 @@ PrefabInstance:
     - target: {fileID: 9195879860661301519, guid: 225c90a9a8d5c0c4381c463f4a99b66c, type: 3}
       propertyPath: m_Name
       value: Moon
+      objectReference: {fileID: 0}
+    - target: {fileID: 9195879860661301519, guid: 225c90a9a8d5c0c4381c463f4a99b66c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
