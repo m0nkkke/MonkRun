@@ -35,6 +35,7 @@ public class CollisionScript : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         string tag = other.gameObject.tag;
+        //print(tag);
         bool flagDestroy = false;
         switch (tag)
         {

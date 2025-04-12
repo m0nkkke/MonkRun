@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
     private const string filename = "result.json";
     private const int START_SPEED = 8;
 
-    private const string KEY_SAVE = "mainData";
+    public const string KEY_SAVE = "mainData";
     public bool onRoad = false;
 
     public GameData gameData;
@@ -207,6 +207,7 @@ public class GameManager : MonoBehaviour
         gameData.AllBananas += Instance.Bananas;
         SaveManager.Save(KEY_SAVE, gameData);
     }
+
     public void Load() 
     {
 
