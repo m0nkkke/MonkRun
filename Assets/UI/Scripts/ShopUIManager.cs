@@ -47,8 +47,9 @@ public class ShopUIManager : MonoBehaviour
             GameManager.Instance.gameData.AllBananas -= _currentItem.Price; // Списываем бананы из базы данных
 
             // Сохраняем обновленное количество бананов в PlayerPrefs
-            PlayerPrefs.SetInt("Bananas", GameManager.Instance.gameData.AllBananas);
-            PlayerPrefs.Save(); // Сохраняем изменения
+            //PlayerPrefs.SetInt("Bananas", GameManager.Instance.gameData.AllBananas);
+            //PlayerPrefs.Save(); // Сохраняем изменения
+            SaveManager.Save(GameManager.KEY_SAVE, GameManager.Instance.gameData);
 
             _currentItem.Unlock(); // Разблокируем скин
             _currentItem.ToggleSelection(ShopPanel.Instance.GetShopItems()); // Выбираем скин
