@@ -1,40 +1,37 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using System;
+using UnityEngine;
+
 [CreateAssetMenu(fileName = "ShopItemViewFactory", menuName = "Shop/ShopItemViewFactory")]
 public class ShopItemViewFactory : ScriptableObject
 {
-    [SerializeField] private ShopItemView _characterSkinItemPrefab;
-    
+    [SerializeField] private ShopItemView _characterSkinItemPrefab; // Префаб для скинов персонажей
+
     public ShopItemView Get(ShopItem shopItem, Transform parent)
     {
+        if (shopItem == null)
+        {
+            Debug.LogError("ShopItem is null");
+            return null; // Возвращаем null, если переданный объект shopItem пустой
+        }
+
         ShopItemView instance;
         switch (shopItem)
         {
             case CharacterSkinsItem characterSkinsItem:
-                instance = Instantiate(_characterSkinItemPrefab, parent);
+                if (_characterSkinItemPrefab == null)
+                {
+                    Debug.LogError("CharacterSkinItem prefab is not assigned.");
+                    return null; // Если префаб не назначен, выводим ошибку и возвращаем null
+                }
+                instance = Instantiate(_characterSkinItemPrefab, parent); // Создаем экземпляр скина
                 break;
+
             default:
-                throw new ArgumentException(nameof(shopItem));
-        }
-        instance.Initialize(shopItem);
-        return instance;
-    }
-
-    private class ShopItemVisitor : IShopItemVisiter
-    {
-        private ShopItemView _characterSkinItemPrefab;
-
-        public ShopItemVisitor(ShopItemView characterSkinItemPrefab)
-        {
-            _characterSkinItemPrefab = characterSkinItemPrefab;
+                Debug.LogError($"Неизвестный тип скина: {shopItem.GetType().Name}");
+                return null; // Возвращаем null, если тип скина не распознан
         }
 
-        public ShopItemView Prefab { get; private set; }
-
-        public void Visit(ShopItem shopItem) => Visit((dynamic)shopItem);
-
-        public void Visit(CharacterSkinsItem characterSkinsItem) => Prefab = _characterSkinItemPrefab;
+        instance.Initialize(shopItem); // Инициализация скина
+        return instance; // Возвращаем созданный экземпляр скина
     }
 }

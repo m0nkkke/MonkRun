@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Wallet
@@ -9,20 +7,25 @@ public class Wallet
 
     private IPersistentData _persistentData;
 
-    public Wallet(IPersistentData persistentData) => _persistentData = persistentData;
+    public Wallet(IPersistentData persistentData)
+    {
+        _persistentData = persistentData;
+    }
 
+    // Добавление монет
     public void AddCoins(int coins)
     {
         if (coins < 0)
             throw new ArgumentOutOfRangeException(nameof(coins));
 
         _persistentData.PlayerData.Money += coins;
-
         CoinsChanged?.Invoke(_persistentData.PlayerData.Money);
     }
 
+    // Получение текущих монет
     public int GetCurrentCoins() => _persistentData.PlayerData.Money;
 
+    // Проверка, хватает ли монет
     public bool IsEnough(int coins)
     {
         if (coins < 0)
@@ -30,12 +33,13 @@ public class Wallet
         return _persistentData.PlayerData.Money >= coins;
     }
 
+    // Тратим монеты
     public void Spend(int coins)
     {
         if (coins < 0)
             throw new ArgumentOutOfRangeException(nameof(coins));
-        _persistentData.PlayerData.Money -= coins;
 
+        _persistentData.PlayerData.Money -= coins;
         CoinsChanged?.Invoke(_persistentData.PlayerData.Money);
     }
 }

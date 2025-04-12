@@ -78,6 +78,8 @@ public class GameManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        ApplySavedMaterial(); //Тут я тоже добавил 
+        ApplySavedMaterialForScene2(); // Тут тоже добавил
         FindMenuLose();
         FindMenuRevive();
         bananasText = GameObject.Find("BananaText");
@@ -444,7 +446,124 @@ public class GameManager : MonoBehaviour
         roadSpeed = 0;
     }
 
+    //Тут короч я добавил для монка смену скина 
+    // Сохранение материала скина в PlayerPrefs
+    public void SaveSkinMaterial(Material material)
+    {
+        // Сохраняем материал через его имя
+        if (material != null)
+        {
+            PlayerPrefs.SetString("SelectedSkinMaterial", material.name);
+            PlayerPrefs.Save();
+        }
+    }
 
+    private void ApplySavedMaterial()
+    {
+        // Получаем сохраненный материал из PlayerPrefs
+        string materialName = PlayerPrefs.GetString("SelectedSkinMaterial", string.Empty);
+        if (!string.IsNullOrEmpty(materialName))
+        {
+            // Находим объект unamed
+            GameObject unamedObject = GameObject.Find("monkWithColider/unamed");
+            if (unamedObject != null)
+            {
+                Renderer renderer = unamedObject.GetComponent<Renderer>();
+                if (renderer != null)
+                {
+                    // Загружаем материал из папки "Materials"
+                    Material material = Resources.Load<Material>("Materials/" + materialName);
+                    if (material != null)
+                    {
+                        // Применяем материал
+                        renderer.material = material;
+                    }
+                    else
+                    {
+                        Debug.LogError("Не удалось найти материал: " + materialName);
+                    }
+                }
+            }
+            else
+            {
+                Debug.LogError("Не найден объект unamed в сцене!");
+            }
+        }
+        else
+        {
+            Debug.LogError("Не найдено сохранённого материала в PlayerPrefs!");
+        }
+    }
+
+    // В методе, который вызывается при загрузке второй сцены
+    private void ApplySavedMaterialForScene2()
+    {
+        string materialName = PlayerPrefs.GetString("SelectedSkinMaterial", string.Empty);
+        if (!string.IsNullOrEmpty(materialName))
+        {
+            // Находим объект unamed в другой сцене
+            GameObject unamedObject = GameObject.Find("monkOnMenu/unamed");
+            if (unamedObject != null)
+            {
+                Renderer renderer = unamedObject.GetComponent<Renderer>();
+                if (renderer != null)
+                {
+                    Material material = Resources.Load<Material>("Materials/" + materialName);
+                    if (material != null)
+                    {
+                        renderer.material = material;  // Применяем материал
+                    }
+                    else
+                    {
+                        Debug.LogError("Не удалось найти материал: " + materialName);
+                    }
+                }
+            }
+        }
+        else
+        {
+            Debug.LogError("Не найдено сохранённого материала в PlayerPrefs!");
+        }
+    }
+
+    private void LoadSelectedSkin()
+    {
+        // Получаем тип выбранного скина из PlayerPrefs
+        string selectedSkinType = PlayerPrefs.GetString("SelectedSkin", string.Empty);
+
+        if (!string.IsNullOrEmpty(selectedSkinType))
+        {
+            // Проверяем, если тип скина сохранён
+            foreach (var item in ShopPanel.Instance.GetShopItems()) // Получаем все скины в магазине
+            {
+                if (item.Item is CharacterSkinsItem characterSkinItem && characterSkinItem.SkinType.ToString() == selectedSkinType)
+                {
+                    // Применяем материал скина
+                    item.ToggleSelection(ShopPanel.Instance.GetShopItems()); // Передаем весь список скинов для правильного выбора
+                    break;
+                }
+            }
+        }
+        else
+        {
+            Debug.Log("Выбранный скин не найден, применяем дефолтный.");
+            // Здесь можно установить дефолтный скин (например, первый скин в списке)
+            SetDefaultSkin();
+        }
+    }
+
+    // Пример установки дефолтного скина (если ничего не выбрано)
+    private void SetDefaultSkin()
+    {
+        foreach (var item in ShopPanel.Instance.GetShopItems())
+        {
+            if (item.Item is CharacterSkinsItem characterSkinItem && characterSkinItem.SkinType == CharacterSkins.BaseMonk) // Если это дефолтный скин
+            {
+                item.ToggleSelection(ShopPanel.Instance.GetShopItems()); // Применяем дефолтный скин
+                break;
+            }
+        }
+    }
 }
 
 public enum ColliderTypes

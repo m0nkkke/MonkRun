@@ -418,8 +418,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 2000
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 4cbfc1579e0422643b48b15fe5c96a3b, type: 2}
-  m_sharedMaterial: {fileID: 7015678152453153711, guid: 4cbfc1579e0422643b48b15fe5c96a3b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -583,6 +583,9 @@ MonoBehaviour:
   _contentImage: {fileID: 596201586378130410}
   _lockImage: {fileID: 1320661590237948384}
   _selectionItem: {fileID: 3348375236487315981}
+  _bananaIcon: {fileID: 4200582109839162905}
+  _priceText: {fileID: 2613094386082688318}
+  _priceContainer: {fileID: 4335968828940139860}
 --- !u!1 &8061236424342166799
 GameObject:
   m_ObjectHideFlags: 0

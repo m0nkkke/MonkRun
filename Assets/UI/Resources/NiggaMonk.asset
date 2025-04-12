@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64e98999a78285f4aa540e523e6fab8d, type: 3}
   m_Name: NiggaMonk
   m_EditorClassIdentifier: 
-  <Model>k__BackingField: {fileID: 0}
-  <Image>k__BackingField: {fileID: 0}
-  <Price>k__BackingField: 0
-  <SkinType>k__BackingField: 0
+  Name: "\u0427\u0435\u0440\u043D\u044B\u0439 \u043C\u043E\u043D\u043A"
+  Price: 11
+  IsUnlocked: 1
+  Icon: {fileID: 21300000, guid: f7b03e53de1bda54289e4c818e02715f, type: 3}
+  SkinMaterial: {fileID: 2100000, guid: 09b17fb03dd797e40a61cd4e5d47ce7e, type: 2}
+  <SkinType>k__BackingField: 1

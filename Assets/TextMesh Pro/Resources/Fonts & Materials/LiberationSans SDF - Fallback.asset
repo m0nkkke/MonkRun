@@ -781,6 +781,30 @@ MonoBehaviour:
     m_Unicode: 1100
     m_GlyphIndex: 1021
     m_Scale: 1
+  - m_ElementType: 1
+    m_Unicode: 1055
+    m_GlyphIndex: 976
+    m_Scale: 1
+  - m_ElementType: 1
+    m_Unicode: 1088
+    m_GlyphIndex: 1009
+    m_Scale: 1
+  - m_ElementType: 1
+    m_Unicode: 1086
+    m_GlyphIndex: 1007
+    m_Scale: 1
+  - m_ElementType: 1
+    m_Unicode: 1055
+    m_GlyphIndex: 976
+    m_Scale: 1
+  - m_ElementType: 1
+    m_Unicode: 1088
+    m_GlyphIndex: 1009
+    m_Scale: 1
+  - m_ElementType: 1
+    m_Unicode: 1086
+    m_GlyphIndex: 1007
+    m_Scale: 1
   m_AtlasTextures: []
   m_AtlasTextureIndex: 0
   m_IsMultiAtlasTexturesEnabled: 0

@@ -6,4 +6,6 @@ public enum CharacterSkins
 {
     BaseMonk,
     NiggaMonk,
+    ClownMonk,
+    SonicMonk,
 }
