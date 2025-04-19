@@ -8,6 +8,6 @@ public class RoadExitTrig : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         print("ПРошел");
-        //_roadSpawner.Spawn();
+        _roadSpawner.Spawn();
     }
 }
