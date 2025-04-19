@@ -38,6 +38,8 @@ public class RoadSpawner : MonoBehaviour
     [SerializeField]
     private bool mushrooms = false;
 
+    private float currentX = 98f;
+
     private void Start() 
     {
         roads = EmptyRoads.Concat(RockRoads)
@@ -48,8 +50,10 @@ public class RoadSpawner : MonoBehaviour
             .Concat(PitRoads)
             .ToList();
         if (mushrooms) roads = roads.Concat(MushroomRoads).ToList();
-        road = Instantiate(roads[Random.Range(0, roads.Count)], transform.position, Quaternion.identity);
+        Vector3 spawnPos = new Vector3(currentX, 0f, 0f);
+        road = Instantiate(roads[Random.Range(0, roads.Count)], spawnPos, Quaternion.identity);
         AllRoads.Add(road);
+        currentX += roadLen;
         //posEmptySpawnTrigger = GameManager.Instance.StepsSpeedIncrease.Select(x => (x - 10)).ToList();
     }
 
@@ -60,14 +64,20 @@ public class RoadSpawner : MonoBehaviour
         int score = GameManager.Instance.Score;
 
         //if (score == 1) SpawnEmpty();
-        int diff = GameManager.Instance.StepsSpeedIncrease[countEmptySpawns] - score;
-        if (diff <= 15 && diff > 13)
-        {
-            SpawnEmpty();
-            if (countEmptySpawns < GameManager.Instance.StepsSpeedIncrease.Count - 1 && GameManager.Instance.StepsSpeedIncrease.Contains(score + 1))
-                countEmptySpawns += 1;
-        }
-        else SpawnRoadByCategory(ChooseSegment());
+
+        SpawnEmpty();
+
+
+        //int diff = GameManager.Instance.StepsSpeedIncrease[countEmptySpawns] - score;
+        //if (diff <= 15 && diff > 13)
+        //{
+        //    SpawnEmpty();
+        //    if (countEmptySpawns < GameManager.Instance.StepsSpeedIncrease.Count - 1 && GameManager.Instance.StepsSpeedIncrease.Contains(score + 1))
+        //        countEmptySpawns += 1;
+        //}
+        //else SpawnRoadByCategory(ChooseSegment());
+
+
         //else SpawnRoad(roads);
     }
     private void SpawnEmpty()
@@ -108,12 +118,16 @@ public class RoadSpawner : MonoBehaviour
 
     private void SpawnRoad(List<GameObject> roadList)
     {
-        if (road.transform.position.x < 100)
-        {
-            Vector3 pos = new Vector3(road.transform.position.x + roadLen, road.transform.position.y, road.transform.position.z);
-            road = Instantiate(roadList[Random.Range(0, roadList.Count)], pos, Quaternion.identity);
-            AllRoads.Add(road);
-        }
+        //if (road.transform.position.x < 100)
+        //{
+        //Vector3 pos = new Vector3(road.transform.position.x + roadLen, road.transform.position.y, road.transform.position.z);
+
+        print(roadList);
+        Vector3 pos = new Vector3(currentX, 0f, 0f);
+        road = Instantiate(roadList[Random.Range(0, roadList.Count)], pos, Quaternion.identity);
+        AllRoads.Add(road);
+        currentX += roadLen;
+        //}
     }
 
     // Метод для выбора сегмента

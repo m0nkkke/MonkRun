@@ -10,22 +10,23 @@ public class Road : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
-    {
-        Move();
-    }
+    //void FixedUpdate()
+    //{
+    //    Move();
+    //}
 
-    private void Move()
-    {
-        transform.Translate(-transform.right * GameManager.Instance.roadSpeed * Time.fixedDeltaTime);
+    //private void Move()
+    //{
+    //    transform.Translate(-transform.right * GameManager.Instance.roadSpeed * Time.fixedDeltaTime);
 
-    }
+    //}
     private void DestroyRoad()
     {
-        if (transform.position.x < -15f)
+        //GameObject spawnerObject = GameObject.Find("Spawner");
+        GameObject spawnerObject = GameObject.Find("monkWithColider");
+        RoadSpawner roadSpawner = spawnerObject.GetComponent<RoadSpawner>();
+        if (spawnerObject.transform.position.x - transform.position.x > 21)
         {
-            GameObject spawnerObject = GameObject.Find("Spawner");
-            RoadSpawner roadSpawner = spawnerObject.GetComponent<RoadSpawner>();
             roadSpawner.AllRoads.RemoveAt(0);
             Destroy(gameObject);
         }

@@ -2043,11 +2043,6 @@ PrefabInstance:
       insertIndex: 2
       addedObject: {fileID: 1534374061}
   m_SourcePrefab: {fileID: 100100000, guid: 1b5b8168a065de84cbf2c69b7694ed43, type: 3}
---- !u!4 &1724153323 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2138410547572653197, guid: 1b5b8168a065de84cbf2c69b7694ed43, type: 3}
-  m_PrefabInstance: {fileID: 1724153322}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1731085711
 GameObject:
   m_ObjectHideFlags: 0
@@ -2092,9 +2087,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f8e020455cde1849aafcb3884995434, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monk: {fileID: 0}
   roadLen: 7
-  segmentCount: 10
   EmptyRoads:
   - {fileID: 1561360546929875918, guid: 9a48a4dd08c917c4ca2b99708d7619aa, type: 3}
   - {fileID: 6694697960898321529, guid: aad7115aa606e57418e3c50c780c8311, type: 3}
@@ -2153,15 +2146,6 @@ MonoBehaviour:
   - {fileID: 8922996827175410764, guid: 3c03ee2a16f0de840aa0e9748696bc57, type: 3}
   - {fileID: 6981385799097578164, guid: 612d9bc3b067aa24db92f6093c43d492, type: 3}
   - {fileID: 3482980256026452465, guid: 75834ccfa533ac849943e62e6db738ad, type: 3}
-  mushrooms: 1
-  coefEmpty: 5
-  coefRock: 25
-  coefBanana: 15
-  coefFly: 20
-  coefSpider: 10
-  coefRiver: 5
-  coefPit: 10
-  coefMushroom: 5
   AllRoads:
   - {fileID: 624443880}
   - {fileID: 1875801485}
@@ -2179,6 +2163,7 @@ MonoBehaviour:
   - {fileID: 1232158265}
   - {fileID: 459306406}
   - {fileID: 1827777854}
+  mushrooms: 1
 --- !u!1001 &1827777853
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2547,9 +2532,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f8e020455cde1849aafcb3884995434, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monk: {fileID: 1724153323}
   roadLen: 7
-  segmentCount: 10
   EmptyRoads:
   - {fileID: 1561360546929875918, guid: 9a48a4dd08c917c4ca2b99708d7619aa, type: 3}
   - {fileID: 6694697960898321529, guid: aad7115aa606e57418e3c50c780c8311, type: 3}
@@ -2608,15 +2591,6 @@ MonoBehaviour:
   - {fileID: 8922996827175410764, guid: 3c03ee2a16f0de840aa0e9748696bc57, type: 3}
   - {fileID: 6981385799097578164, guid: 612d9bc3b067aa24db92f6093c43d492, type: 3}
   - {fileID: 3482980256026452465, guid: 75834ccfa533ac849943e62e6db738ad, type: 3}
-  mushrooms: 1
-  coefEmpty: 5
-  coefRock: 25
-  coefBanana: 15
-  coefFly: 20
-  coefSpider: 10
-  coefRiver: 5
-  coefPit: 10
-  coefMushroom: 5
   AllRoads:
   - {fileID: 624443880}
   - {fileID: 1875801485}
@@ -2634,6 +2608,7 @@ MonoBehaviour:
   - {fileID: 1232158265}
   - {fileID: 459306406}
   - {fileID: 1827777854}
+  mushrooms: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
