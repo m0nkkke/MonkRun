@@ -5,8 +5,6 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private RoadSpawner _roadSpawner;
-    //[SerializeField] private List<RiverSpawner> _riverSpawners;
-    //[SerializeField] private RoadSpawner _mountainSpawner;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -16,5 +14,15 @@ public class Player : MonoBehaviour
             _roadSpawner.Spawn();
             GameManager.Instance.IncreaseScore();
         }
+    }
+    void FixedUpdate()
+    {
+        Move();
+    }
+
+    private void Move()
+    {
+        transform.Translate(-transform.right * GameManager.Instance.roadSpeed * Time.fixedDeltaTime);
+
     }
 }

@@ -381,7 +381,8 @@ public class GameManager : MonoBehaviour
     // Замена первых 5 дорог на EmptyRoad
     private void ReplaceFirstFiveRoads()
     {
-        GameObject spawnerObject = GameObject.Find("Spawner");
+        //GameObject spawnerObject = GameObject.Find("Spawner");
+        GameObject spawnerObject = GameObject.Find("monkWithColider");
         RoadSpawner roadSpawner = spawnerObject.GetComponent<RoadSpawner>();
         roadSpawner.ReplaceRoadsWithEmptySegments();
 

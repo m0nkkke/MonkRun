@@ -179,6 +179,51 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8261863726f4ac644809f148806c8d82, type: 3}
+--- !u!1 &78518687
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 78518689}
+  - component: {fileID: 78518688}
+  m_Layer: 0
+  m_Name: Camers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &78518688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 78518687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3f19219a32072d438015a19aa73c9a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &78518689
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 78518687}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.2705572, y: -14.567312, z: -4.6183977}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 994169983}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &173924170
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1090,7 +1135,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 78518689}
     m_Modifications:
     - target: {fileID: 1604612210756584138, guid: 291507768d15cc14e83e363ee3655a5a, type: 3}
       propertyPath: m_ClearFlags
@@ -1114,19 +1159,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5972521143418433431, guid: 291507768d15cc14e83e363ee3655a5a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.193
+      value: -4.4635572
       objectReference: {fileID: 0}
     - target: {fileID: 5972521143418433431, guid: 291507768d15cc14e83e363ee3655a5a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.33
+      value: 16.897312
       objectReference: {fileID: 0}
     - target: {fileID: 5972521143418433431, guid: 291507768d15cc14e83e363ee3655a5a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.367
+      value: -0.7486024
       objectReference: {fileID: 0}
     - target: {fileID: 5972521143418433431, guid: 291507768d15cc14e83e363ee3655a5a, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9315298
+      value: 0.9315299
       objectReference: {fileID: 0}
     - target: {fileID: 5972521143418433431, guid: 291507768d15cc14e83e363ee3655a5a, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1134,7 +1179,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5972521143418433431, guid: 291507768d15cc14e83e363ee3655a5a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.36358878
+      value: 0.3635888
       objectReference: {fileID: 0}
     - target: {fileID: 5972521143418433431, guid: 291507768d15cc14e83e363ee3655a5a, type: 3}
       propertyPath: m_LocalRotation.z
@@ -1888,7 +1933,7 @@ PrefabInstance:
     - target: {fileID: 3162412568380841135, guid: 1b5b8168a065de84cbf2c69b7694ed43, type: 3}
       propertyPath: _roadSpawner
       value: 
-      objectReference: {fileID: 1731085714}
+      objectReference: {fileID: 2028656929}
     - target: {fileID: 3162412568380841135, guid: 1b5b8168a065de84cbf2c69b7694ed43, type: 3}
       propertyPath: _riverSpawner
       value: 
@@ -1979,6 +2024,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1650280902190982711, guid: 1b5b8168a065de84cbf2c69b7694ed43, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2028656927}
+    - targetCorrespondingSourceObject: {fileID: 1650280902190982711, guid: 1b5b8168a065de84cbf2c69b7694ed43, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2028656929}
     - targetCorrespondingSourceObject: {fileID: 3576587708105576779, guid: 1b5b8168a065de84cbf2c69b7694ed43, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1368965812}
@@ -1995,6 +2043,11 @@ PrefabInstance:
       insertIndex: 2
       addedObject: {fileID: 1534374061}
   m_SourcePrefab: {fileID: 100100000, guid: 1b5b8168a065de84cbf2c69b7694ed43, type: 3}
+--- !u!4 &1724153323 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2138410547572653197, guid: 1b5b8168a065de84cbf2c69b7694ed43, type: 3}
+  m_PrefabInstance: {fileID: 1724153322}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1731085711
 GameObject:
   m_ObjectHideFlags: 0
@@ -2034,12 +2087,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1731085711}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f8e020455cde1849aafcb3884995434, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  monk: {fileID: 0}
   roadLen: 7
+  segmentCount: 10
   EmptyRoads:
   - {fileID: 1561360546929875918, guid: 9a48a4dd08c917c4ca2b99708d7619aa, type: 3}
   - {fileID: 6694697960898321529, guid: aad7115aa606e57418e3c50c780c8311, type: 3}
@@ -2098,6 +2153,15 @@ MonoBehaviour:
   - {fileID: 8922996827175410764, guid: 3c03ee2a16f0de840aa0e9748696bc57, type: 3}
   - {fileID: 6981385799097578164, guid: 612d9bc3b067aa24db92f6093c43d492, type: 3}
   - {fileID: 3482980256026452465, guid: 75834ccfa533ac849943e62e6db738ad, type: 3}
+  mushrooms: 1
+  coefEmpty: 5
+  coefRock: 25
+  coefBanana: 15
+  coefFly: 20
+  coefSpider: 10
+  coefRiver: 5
+  coefPit: 10
+  coefMushroom: 5
   AllRoads:
   - {fileID: 624443880}
   - {fileID: 1875801485}
@@ -2115,7 +2179,6 @@ MonoBehaviour:
   - {fileID: 1232158265}
   - {fileID: 459306406}
   - {fileID: 1827777854}
-  mushrooms: 1
 --- !u!1001 &1827777853
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2472,13 +2535,111 @@ MonoBehaviour:
   Pause: {fileID: 24500006, guid: d98db8152a14820449b13c6536833fa7, type: 2}
   MushroomDN: {fileID: 6800308559891298800, guid: d98db8152a14820449b13c6536833fa7, type: 2}
   MushroomS: {fileID: 1357146258829640798, guid: d98db8152a14820449b13c6536833fa7, type: 2}
+--- !u!114 &2028656929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2028656925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f8e020455cde1849aafcb3884995434, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monk: {fileID: 1724153323}
+  roadLen: 7
+  segmentCount: 10
+  EmptyRoads:
+  - {fileID: 1561360546929875918, guid: 9a48a4dd08c917c4ca2b99708d7619aa, type: 3}
+  - {fileID: 6694697960898321529, guid: aad7115aa606e57418e3c50c780c8311, type: 3}
+  - {fileID: 5069620288058158669, guid: f4586225e4989f945adc93808ee64b35, type: 3}
+  - {fileID: 4866753633006713757, guid: a56edd0fe84854442b62f0b4bc2f0cdd, type: 3}
+  RockRoads:
+  - {fileID: 1939916250172415066, guid: 1005e7924392f934a9e0fe90c9226494, type: 3}
+  - {fileID: 7362696937235562055, guid: 7b66bfd8683942e40add2e9aa5b1e271, type: 3}
+  - {fileID: 3799541177592772676, guid: 8afcedbf2e47cea4d887d2409078c9b8, type: 3}
+  - {fileID: 3780146624943435265, guid: f8937f34c7522a24cb053cd990a48de3, type: 3}
+  - {fileID: 8457146451842576807, guid: 7ef673c41337cf945b3a364d7658893f, type: 3}
+  - {fileID: 5612332018061740992, guid: 54c036cd8e0e0204495b6d284af90542, type: 3}
+  - {fileID: 5629138853180956174, guid: 0c48a99073d501a4f830d495d6f08238, type: 3}
+  - {fileID: 5355412604143894893, guid: 44f354cebf752564392a42662a518f09, type: 3}
+  - {fileID: 3376110227515727182, guid: a7edf7bb6f73167469fe8949c6976205, type: 3}
+  - {fileID: 5986403068012864634, guid: aeb5d04ae3dea2b4dba828030b7a4dfb, type: 3}
+  - {fileID: 6806845290654146564, guid: b6793584b9986074baf6584e1558b190, type: 3}
+  - {fileID: 6307172578671848621, guid: c7d0c4063809a6d459cbf7395df39a02, type: 3}
+  BananaRoads:
+  - {fileID: 3767553353209326196, guid: 6584d5ee1593ba54eb08739831081039, type: 3}
+  - {fileID: 2326208469521017105, guid: e7f8c50c3053a904e8057832c634b612, type: 3}
+  - {fileID: 3595972445495736897, guid: 38934bc7f39899b478586b169ed7d59c, type: 3}
+  - {fileID: 2586824528531520213, guid: e17fe5e1f713f1b4393dda92d2cacb46, type: 3}
+  FlyRoads:
+  - {fileID: 7026224070525308537, guid: 105fbb421cbc2aa45b515ba64dc7ae40, type: 3}
+  - {fileID: 1046615399104195238, guid: 90de92ea0d543064ebabf4695935b8c9, type: 3}
+  - {fileID: 1300339113154950440, guid: bf9ee5aa65b644b4c8809e9bda9c7d3f, type: 3}
+  - {fileID: 3948484102269579162, guid: 11e9af71337a66241a8aea689cda1fb0, type: 3}
+  SpiderRoads:
+  - {fileID: 6083360312162452736, guid: 2e4d646a12560ca42bd0b1e49ea479dd, type: 3}
+  - {fileID: 7788696626849681827, guid: 5c2ce9222d2b57a47b3e3557186f1e8f, type: 3}
+  - {fileID: 1557968796712476918, guid: 1c260d3ce41dbc349bf7718bf0778c82, type: 3}
+  - {fileID: 5378412100161874068, guid: c05e8292d670dc149bf1bc1270dce746, type: 3}
+  RiverRoads:
+  - {fileID: 5365775797761899689, guid: 96352dcf249bcbf44a56c5ff17c0738d, type: 3}
+  - {fileID: 7959553764745737148, guid: b9023cb5e0bb9c144a10b9343b203331, type: 3}
+  PitRoads:
+  - {fileID: 5091254852578586535, guid: 5f9a4e3d502f73844a5c06e40edad498, type: 3}
+  - {fileID: 4199106065791884368, guid: 03ebb11fb4098e147b4a2d9895f00f95, type: 3}
+  - {fileID: 1511542958884411724, guid: 3b7345379341c41418d3f251f3be6bcc, type: 3}
+  - {fileID: 6122840335342400920, guid: 121503c1faefacd409faaa1e669adb9b, type: 3}
+  MushroomRoads:
+  - {fileID: 656904826098497904, guid: 329751ba2d3e30945a758787f8da4cd6, type: 3}
+  - {fileID: 9067134037199574057, guid: 8c3e37133ab4a974f8d25df3c4c1488d, type: 3}
+  - {fileID: 1723939697437968765, guid: 8c84984c92eed7b4da53f8932d46a965, type: 3}
+  - {fileID: 9031759213874903152, guid: 5dfa863dea7569c44b194d86fda8ee24, type: 3}
+  - {fileID: 734701881390730108, guid: dadfb04709abc8f4e8a02f0193348440, type: 3}
+  - {fileID: 6760002915549488627, guid: 49a6bd7a368c6a74bb50db191aeef9c1, type: 3}
+  - {fileID: 691582497447150396, guid: a744445243ab9114ba9b39fe17b5027a, type: 3}
+  - {fileID: 2680342989013045638, guid: 69dffbb4d932e8147ae55a8046b6f57f, type: 3}
+  - {fileID: 524898822323837295, guid: a3340d8317cdeca4887b01afcab94568, type: 3}
+  - {fileID: 5980819997692481945, guid: d840031d0a75a914fb1dcf2b359369f6, type: 3}
+  - {fileID: 8685011393911526696, guid: 14b5b3c3587f15a4a963b3ded6cd017d, type: 3}
+  - {fileID: 8907205166890513205, guid: 875aafe801eee7c499113c642e282811, type: 3}
+  - {fileID: 6309355476450624759, guid: 794d34e90e8fb4d45834948271f7e783, type: 3}
+  - {fileID: 8922996827175410764, guid: 3c03ee2a16f0de840aa0e9748696bc57, type: 3}
+  - {fileID: 6981385799097578164, guid: 612d9bc3b067aa24db92f6093c43d492, type: 3}
+  - {fileID: 3482980256026452465, guid: 75834ccfa533ac849943e62e6db738ad, type: 3}
+  mushrooms: 1
+  coefEmpty: 5
+  coefRock: 25
+  coefBanana: 15
+  coefFly: 20
+  coefSpider: 10
+  coefRiver: 5
+  coefPit: 10
+  coefMushroom: 5
+  AllRoads:
+  - {fileID: 624443880}
+  - {fileID: 1875801485}
+  - {fileID: 173924171}
+  - {fileID: 1954478194}
+  - {fileID: 1339080088}
+  - {fileID: 588832209}
+  - {fileID: 637236417}
+  - {fileID: 1577468199}
+  - {fileID: 410675122}
+  - {fileID: 972688267}
+  - {fileID: 846333654}
+  - {fileID: 1253397159}
+  - {fileID: 734825128}
+  - {fileID: 1232158265}
+  - {fileID: 459306406}
+  - {fileID: 1827777854}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 43433131}
   - {fileID: 232302904}
-  - {fileID: 994169982}
   - {fileID: 882687669}
   - {fileID: 1731085713}
   - {fileID: 1724153322}
@@ -2502,3 +2663,4 @@ SceneRoots:
   - {fileID: 569374484}
   - {fileID: 1109511037}
   - {fileID: 960812001}
+  - {fileID: 78518689}
