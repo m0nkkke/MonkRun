@@ -78,44 +78,6 @@ public class MonkeyController : MonoBehaviour
                 else ToSlide();
             }
         }
-        // дебаг рестарт (уже не надо)
-        //else if (e.x > 0)
-        //{
-        //    GameManager.Instance.Restart();
-        //}
     }
 
-
-
-
-    //void Start()
-    //{
-    //    animator = GetComponent<Animator>();
-    //}
-
-    //void Update()
-    //{
-    //    // Прыжок по пробелу
-    //    AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
-
-    //    // Прыжок по пробелу
-    //    if (Input.GetKeyDown(KeyCode.Space))
-    //    {
-    //        if (!stateInfo.IsName("Jump") && !stateInfo.IsName("Slide"))
-    //        {
-    //            animator.ResetTrigger("Slide");
-    //            animator.SetTrigger("Jump");
-    //        }
-    //    }
-
-    //    // Слайд по ПКМ
-    //    if (Input.GetMouseButtonDown(1)) // 1 - это правая кнопка мыши
-    //    {
-    //        if (!stateInfo.IsName("Jump") && !stateInfo.IsName("Slide"))
-    //        {
-    //            animator.ResetTrigger("Jump");
-    //            animator.SetTrigger("Slide");
-    //        }
-    //    }
-    //}
 }

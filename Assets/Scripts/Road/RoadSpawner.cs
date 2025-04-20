@@ -65,28 +65,31 @@ public class RoadSpawner : MonoBehaviour
 
         //if (score == 1) SpawnEmpty();
 
-        SpawnEmpty();
+        //SpawnEmpty();
+        //SpawnRoadByCategory(ChooseSegment());
 
 
-        //int diff = GameManager.Instance.StepsSpeedIncrease[countEmptySpawns] - score;
-        //if (diff <= 15 && diff > 13)
-        //{
-        //    SpawnEmpty();
-        //    if (countEmptySpawns < GameManager.Instance.StepsSpeedIncrease.Count - 1 && GameManager.Instance.StepsSpeedIncrease.Contains(score + 1))
-        //        countEmptySpawns += 1;
-        //}
-        //else SpawnRoadByCategory(ChooseSegment());
+        int diff = GameManager.Instance.StepsSpeedIncrease[countEmptySpawns] - score;
+        if (diff <= 17 && diff > 13)
+        {
+            SpawnEmpty();
+        }
+        else SpawnRoadByCategory(ChooseSegment());
+        if (countEmptySpawns < GameManager.Instance.StepsSpeedIncrease.Count - 1 && GameManager.Instance.StepsSpeedIncrease.Contains(score + 1))
+            countEmptySpawns += 1;
 
 
         //else SpawnRoad(roads);
     }
     private void SpawnEmpty()
     {
+        print("===== Spawn Empty =====");
         SpawnRoad(EmptyRoads);
     }
 
     private void SpawnRoadByCategory(CategorySegment cat)
     {
+        print("===== Spawn random road =====");
         switch (cat)
         {
             case CategorySegment.Empty:
@@ -121,8 +124,6 @@ public class RoadSpawner : MonoBehaviour
         //if (road.transform.position.x < 100)
         //{
         //Vector3 pos = new Vector3(road.transform.position.x + roadLen, road.transform.position.y, road.transform.position.z);
-
-        print(roadList);
         Vector3 pos = new Vector3(currentX, 0f, 0f);
         road = Instantiate(roadList[Random.Range(0, roadList.Count)], pos, Quaternion.identity);
         AllRoads.Add(road);
