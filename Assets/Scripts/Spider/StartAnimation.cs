@@ -12,9 +12,16 @@ public class StartAnimation : MonoBehaviour
     [SerializeField]
     private Renderer rend;
 
+    private GameObject Monk;
+    private void Start()
+    {
+        Monk = GameObject.Find("monkWithColider");
+    }
+
     private void Update()
     {
-        if (flag && transform.position.x < 22)
+        float diff = transform.position.x - Monk.transform.position.x;
+        if (flag && diff < 22)
         {
             rend.enabled = true;
             animator.SetTrigger("flag");
