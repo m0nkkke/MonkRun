@@ -21,10 +21,15 @@ public class DayCycleManager : MonoBehaviour
     private bool isTransitioning = false; // Флаг перехода
     private float targetTimeOfDay; // Целевое время суток
     public int nextScoreThreshold = 10; // Следующий порог очков
-
+    void Awake()
+    {
+        // принудительно ставим «день» ещё до Start()
+        TimeOfDay = 0.25f;
+    }
     void Start()
     {
         sunIntensity = Sun.intensity;
+        UpdateLighting();
     }
 
     void Update()

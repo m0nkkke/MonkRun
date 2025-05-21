@@ -106,22 +106,27 @@ public class GameManager : MonoBehaviour
     }
     private void FindMushroomTimers()
     {
-        if (textTimerMushroomDN == null)
+        GameObject parentObject = GameObject.Find("CanvasPause");
+        if (parentObject != null)
         {
-            GameObject parentObject = GameObject.Find("CanvasPause");
-            if (parentObject != null)
+            if (textTimerMushroomDN == null)
             {
                 textTimerMushroomDN = parentObject.transform.Find("TimerMushroomDN")?.gameObject;
             }
-        }
-        if (textTimerMushroomS == null)
-        {
-            GameObject parentObject = GameObject.Find("CanvasPause");
-            if (parentObject != null)
+            if (textTimerMushroomS == null)
             {
                 textTimerMushroomS = parentObject.transform.Find("TimerMushroomS")?.gameObject;
             }
+            if (iconMushroomDN == null)
+            {
+                iconMushroomDN = parentObject.transform.Find("IconMushroomDN")?.gameObject;
+            }
+            if (iconMushroomS == null)
+            {
+                iconMushroomS = parentObject.transform.Find("IconMushroomS")?.gameObject;
+            }
         }
+
     }
     private void FindMenuLose()
     {
@@ -243,6 +248,7 @@ public class GameManager : MonoBehaviour
         mushroomSpeedCoroutine = null;
     } 
 
+
     public void UpdateSpeed()
     {
         // Максимум скорость увеличится на 2 за 
@@ -282,33 +288,36 @@ public class GameManager : MonoBehaviour
 
     public void OnMonkCollision(ColliderTypes collider)
     {
-        GameObject monk = GameObject.FindWithTag("BackMonk");
-        CollisionScript collisionScript = monk.GetComponent<CollisionScript>();
-        if (mushroomSpeedCoroutine != null)
+        if (isRunning)
         {
-            StopCoroutine(mushroomSpeedCoroutine);
-            collisionScript.resetS();
-        }
-        if (mushroomDNCoroutine != null)
-        {
-            StopCoroutine(mushroomDNCoroutine);
-            collisionScript.resetDN();
-        }
-        lastSpeed = roadSpeed;
-        pause = GameObject.Find("PauseButton");
-        pause.SetActive(false);
-        rollbackCoroutine = StartCoroutine(Rollback(collider));
+            GameObject monk = GameObject.FindWithTag("BackMonk");
+            CollisionScript collisionScript = monk.GetComponent<CollisionScript>();
+            if (mushroomSpeedCoroutine != null)
+            {
+                StopCoroutine(mushroomSpeedCoroutine);
+                collisionScript.resetS();
+            }
+            if (mushroomDNCoroutine != null)
+            {
+                StopCoroutine(mushroomDNCoroutine);
+                collisionScript.resetDN();
+            }
+            lastSpeed = roadSpeed;
+            pause = GameObject.Find("PauseButton");
+            pause.SetActive(false);
+            rollbackCoroutine = StartCoroutine(Rollback(collider));
 
-        if (gameData.AllBananas < CostRevive)
-        {
-            ResetGame();
-        }
-        else if (!isReviveAvailable)
-        {
-            isReviveAvailable = true;
-            isRunning = false;
-            //roadSpeed = 0;
-            reviveCoroutine = StartCoroutine(ReviveTimer()); // Запускаем корутин
+            if (gameData.AllBananas < CostRevive)
+            {
+                ResetGame();
+            }
+            else if (!isReviveAvailable)
+            {
+                isReviveAvailable = true;
+                isRunning = false;
+                //roadSpeed = 0;
+                reviveCoroutine = StartCoroutine(ReviveTimer()); // Запускаем корутин
+            }
         }
     }
 
@@ -397,6 +406,9 @@ public class GameManager : MonoBehaviour
     public float timerMushroomB = 0f;
     public float timerMushroomS = 0f;
     public GameObject textTimerMushroomS;
+    public GameObject iconMushroomS;
+    public GameObject iconMushroomDN;
+
 
 
     private IEnumerator Rollback(ColliderTypes collider)

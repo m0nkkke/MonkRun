@@ -17,7 +17,8 @@ public class CollisionLegScript : SoundsScript
             GameSoundManager.Instance.TriggerHitSound();
             other.enabled = false;
             //GameManager.Instance.roadSpeed = 0;
-            animator.Play("Sweep Fall", -1, 0f);
+            if (GameManager.Instance.isRunning)
+                animator.Play("Sweep Fall", -1, 0f);
             GameManager.Instance.OnMonkCollision(ColliderTypes.Water);
             //GameManager.Instance.ResetGame();
         }
@@ -27,7 +28,8 @@ public class CollisionLegScript : SoundsScript
             GameSoundManager.Instance.TriggerHitSound();
             other.enabled = false;
             //GameManager.Instance.roadSpeed = 0;
-            animator.Play("Sweep Fall", -1, 0f);
+            if (GameManager.Instance.isRunning)
+                animator.Play("Sweep Fall", -1, 0f);
             GameManager.Instance.OnMonkCollision(ColliderTypes.Water);
             //GameManager.Instance.ResetGame();
 

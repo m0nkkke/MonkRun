@@ -18,7 +18,8 @@ public class CollisionHeadScript : SoundsScript
             GameSoundManager.Instance.TriggerHitSound();
             collision.collider.enabled = false;
             //GameManager.Instance.roadSpeed = 0;
-            animator.Play("UmirOtKringa", -1, 0f);
+            if (GameManager.Instance.isRunning)
+                animator.Play("UmirOtKringa", -1, 0f);
             GameManager.Instance.OnMonkCollision(ColliderTypes.Animal);
             //GameManager.Instance.ResetGame();
         }
@@ -28,7 +29,8 @@ public class CollisionHeadScript : SoundsScript
             GameSoundManager.Instance.TriggerHitSound();
             collision.collider.enabled = false;
             //GameManager.Instance.roadSpeed = 0;
-            animator.Play("UmirOtKringa", -1, 0f);
+            if (GameManager.Instance.isRunning)
+                animator.Play("UmirOtKringa", -1, 0f);
             GameManager.Instance.OnMonkCollision(ColliderTypes.Animal);
             //GameManager.Instance.ResetGame();
         }

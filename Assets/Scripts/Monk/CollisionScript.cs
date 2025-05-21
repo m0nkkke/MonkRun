@@ -25,7 +25,8 @@ public class CollisionScript : MonoBehaviour
                 Destroy(col);
             }
             //GameManager.Instance.roadSpeed = 0;
-            animator.Play("Hit On Legs", -1, 0f);
+            if (GameManager.Instance.isRunning)
+                animator.Play("Hit On Legs", -1, 0f);
 
             GameManager.Instance.OnMonkCollision(ColliderTypes.Rock);
             //GameManager.Instance.ResetGame();
@@ -94,6 +95,7 @@ public class CollisionScript : MonoBehaviour
         int speedReductionDuration = 10;
         GameManager.Instance.timerMushroomS = speedReductionDuration + 1;
         GameManager.Instance.textTimerMushroomS.SetActive(true);
+        GameManager.Instance.iconMushroomS.SetActive(true);
 
         // Уменьшаем скорость дороги
         GameManager.Instance.roadSpeed = speed;
@@ -117,6 +119,7 @@ public class CollisionScript : MonoBehaviour
             GSM.Normal.TransitionTo(1.5f);
             GameManager.Instance.mushroomSpeedCoroutine = null;
             GameManager.Instance.textTimerMushroomS.SetActive(false);
+            GameManager.Instance.iconMushroomS.SetActive(false);
             GameManager.Instance.timerMushroomS = 0;
         }
     }
@@ -146,6 +149,7 @@ public class CollisionScript : MonoBehaviour
         //int curTime = 0;
         GameManager.Instance.timerMushroomDN = time + 1;
         GameManager.Instance.textTimerMushroomDN.SetActive(true);
+        GameManager.Instance.iconMushroomDN.SetActive(true);
         startStep = GameManager.Instance.nextScoreThreshold;
         GameManager.Instance.invertMovement = true;
         while (GameManager.Instance.timerMushroomDN > 0)
@@ -168,6 +172,7 @@ public class CollisionScript : MonoBehaviour
 
         GameManager.Instance.mushroomDNCoroutine = null;
         GameManager.Instance.textTimerMushroomDN.SetActive(false);
+        GameManager.Instance.iconMushroomDN.SetActive(false);
         GameManager.Instance.timerMushroomDN = 0;
     }
 
