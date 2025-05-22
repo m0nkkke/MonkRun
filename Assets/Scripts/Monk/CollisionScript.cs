@@ -19,7 +19,7 @@ public class CollisionScript : MonoBehaviour
             //collision.collider.enabled = false;
             Collider[] colliders = collision.gameObject.GetComponents<Collider>();
 
-            // Удаляем все коллайдеры
+            // Г“Г¤Г Г«ГїГҐГ¬ ГўГ±ГҐ ГЄГ®Г«Г«Г Г©Г¤ГҐГ°Г»
             foreach (Collider col in colliders)
             {
                 Destroy(col);
@@ -81,14 +81,14 @@ public class CollisionScript : MonoBehaviour
     private int diffSpeed = 0;
     private IEnumerator ReduceSpeedTemporarily()
     {
-        // Меняем звук
+        // ГЊГҐГ­ГїГҐГ¬ Г§ГўГіГЄ
 
         GameObject monk = GameObject.Find("monkWithColider");
         GameSoundManager GSM = monk.GetComponent<GameSoundManager>();
 
         GSM.MushroomS.TransitionTo(1.5f);
 
-        // Сохраняем исходную скорость
+        // Г‘Г®ГµГ°Г Г­ГїГҐГ¬ ГЁГ±ГµГ®Г¤Г­ГіГѕ Г±ГЄГ®Г°Г®Г±ГІГј
         int originalSpeed = GameManager.Instance.roadSpeed;
         int speed = 6;
         diffSpeed = originalSpeed - speed;
@@ -97,16 +97,16 @@ public class CollisionScript : MonoBehaviour
         GameManager.Instance.textTimerMushroomS.SetActive(true);
         GameManager.Instance.iconMushroomS.SetActive(true);
 
-        // Уменьшаем скорость дороги
+        // Г“Г¬ГҐГ­ГјГёГ ГҐГ¬ Г±ГЄГ®Г°Г®Г±ГІГј Г¤Г®Г°Г®ГЈГЁ
         GameManager.Instance.roadSpeed = speed;
         while (GameManager.Instance.timerMushroomS > 0)
         {
             GameManager.Instance.timerMushroomS--;
             yield return new WaitForSeconds(1);
         }
-        // Ждём 15 секунд
+        // Г†Г¤ВёГ¬ 15 Г±ГҐГЄГіГ­Г¤
 
-        // Возвращаем исходную скорость
+        // Г‚Г®Г§ГўГ°Г Г№Г ГҐГ¬ ГЁГ±ГµГ®Г¤Г­ГіГѕ Г±ГЄГ®Г°Г®Г±ГІГј
         resetS();
     }
     public void resetS()
@@ -150,11 +150,11 @@ public class CollisionScript : MonoBehaviour
         GameManager.Instance.timerMushroomDN = time + 1;
         GameManager.Instance.textTimerMushroomDN.SetActive(true);
         GameManager.Instance.iconMushroomDN.SetActive(true);
-        startStep = GameManager.Instance.nextScoreThreshold;
+        // startStep = GameManager.Instance.nextScoreThreshold;
         GameManager.Instance.invertMovement = true;
         while (GameManager.Instance.timerMushroomDN > 0)
         {
-            GameManager.Instance.nextScoreThreshold = 1;
+            // GameManager.Instance.nextScoreThreshold = 1;
             GameManager.Instance.timerMushroomDN--;
             yield return new WaitForSeconds(1);
         }
@@ -167,7 +167,7 @@ public class CollisionScript : MonoBehaviour
         GameSoundManager GSM = monk.GetComponent<GameSoundManager>();
         GSM.Normal.TransitionTo(1.5f);
 
-        GameManager.Instance.nextScoreThreshold = startStep;
+        // GameManager.Instance.nextScoreThreshold = startStep;
         GameManager.Instance.invertMovement = false;
 
         GameManager.Instance.mushroomDNCoroutine = null;
