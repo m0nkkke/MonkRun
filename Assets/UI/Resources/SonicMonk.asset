@@ -15,6 +15,6 @@ MonoBehaviour:
   Name: "\u0421\u043E\u043D\u0438\u043A \u043C\u043E\u043D\u043A"
   Price: 2000
   IsUnlocked: 0
-  Icon: {fileID: 21300000, guid: 0b7014fe3cfd0514fb8433020e479336, type: 3}
-  SkinMaterial: {fileID: 2100000, guid: 7581afbb2aa3f2e4fa5b966a0b057a61, type: 2}
+  Icon: {fileID: 21300000, guid: c91fa6b46637168439e34ec092779ace, type: 3}
+  SkinMaterial: {fileID: 2100000, guid: 94bdd7e97c07f9c40934a13371f03342, type: 2}
   <SkinType>k__BackingField: 3
