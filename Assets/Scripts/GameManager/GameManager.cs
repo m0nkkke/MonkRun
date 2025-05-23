@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     public int Score = 0;
     public int Bananas = 0;
     public int CoefBanana = 1;
+    public int MainCoefBanana = 1;
     public bool isRunning = true;
     public int nextScoreThreshold = 100;
     public bool invertMovement = false;
@@ -236,6 +237,8 @@ public class GameManager : MonoBehaviour
         Score = 0;
         roadSpeed = START_SPEED;
         CoefBanana = 1;
+        MainCoefBanana = 1;
+        stepToCoef = 500;
         CountMaxBananas = 0;
         nextScoreThreshold = 100;
         CostRevive = START_COST_REVIVE;
@@ -257,13 +260,20 @@ public class GameManager : MonoBehaviour
         // + Bananas / CountMaxBananas
     }
 
-    public readonly List<int> StepsSpeedIncrease = new List<int>() { 15, 30, 50, 100, 170, 300, 500, 700};
+    public readonly List<int> StepsSpeedIncrease = new List<int>() { 15, 30, 50, 100, 170, 300, 500, 700 };
+    private int stepToCoef = 500;
     public void IncreaseScore()
     {
         Score += 1;
         if (StepsSpeedIncrease.Contains(Score))
         {
             UpdateSpeed();
+        }
+        if (Score % stepToCoef == 0)
+        {
+            CoefBanana += 1;
+            MainCoefBanana += 1;
+            stepToCoef *= 2;
         }
     }
 
@@ -305,6 +315,7 @@ public class GameManager : MonoBehaviour
             lastSpeed = roadSpeed;
             pause = GameObject.Find("PauseButton");
             pause.SetActive(false);
+            CoefBanana = MainCoefBanana;
             rollbackCoroutine = StartCoroutine(Rollback(collider));
 
             if (gameData.AllBananas < CostRevive)

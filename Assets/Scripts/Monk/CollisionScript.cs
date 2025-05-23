@@ -126,11 +126,11 @@ public class CollisionScript : MonoBehaviour
     private IEnumerator IncreaseBananaCoef()
     {
         GameManager.Instance.CoefBanana += 1;
-        int time = 20;
+        int time = 10;
 
         yield return new WaitForSeconds(time);
 
-        if (GameManager.Instance.CoefBanana >= 2)
+        if (GameManager.Instance.CoefBanana > GameManager.Instance.MainCoefBanana)
             GameManager.Instance.CoefBanana -= 1;
     }
     private void ReduceBananas()
