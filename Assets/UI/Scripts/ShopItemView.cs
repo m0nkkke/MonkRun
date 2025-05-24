@@ -38,6 +38,7 @@ public class ShopItemView : MonoBehaviour, IPointerClickHandler
         _priceView.Show(item.Price);
         _priceText.text = item.Price.ToString();
 
+
         IsLock = !item.IsUnlocked;
         _lockImage.gameObject.SetActive(IsLock);
 

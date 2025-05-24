@@ -3,7 +3,18 @@ guid: 5165997f932d2014daf1bd1e54a4dcfc
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - _standartBackground: {instanceID: 0}
+  - _highlightBackground: {instanceID: 0}
+  - _priceView: {instanceID: 0}
+  - _contentImage: {instanceID: 0}
+  - _lockImage: {instanceID: 0}
+  - _selectionItem: {instanceID: 0}
+  - _bananaIcon: {instanceID: 0}
+  - _priceText: {instanceID: 0}
+  - _pixeloidFont: {fileID: 11400000, guid: 92995ce40ebf55c4997e25697caad603, type: 2}
+  - _priceContainer: {instanceID: 0}
+  - _renderer: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

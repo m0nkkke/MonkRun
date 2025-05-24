@@ -3766,10 +3766,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _contentItems: {fileID: 11400000, guid: 1ce7b1acc90b12f45a88f2d2abde052e, type: 2}
-  _characterSkinsButton: {fileID: 0}
-  _buyButton: {fileID: 0}
-  _selectionButton: {fileID: 0}
-  _selectedText: {fileID: 0}
   _shopPanel: {fileID: 6219691095993897992}
 --- !u!1 &7815629130375257554
 GameObject:
@@ -3975,8 +3971,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 92995ce40ebf55c4997e25697caad603, type: 2}
+  m_sharedMaterial: {fileID: -5915028421165602599, guid: 92995ce40ebf55c4997e25697caad603, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4006,7 +4002,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
