@@ -13,9 +13,9 @@ public class TimerMushroomDn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.Instance.timerMushroomDN > 0)
+        if (GameManager.Instance.timerMushroomDN + 1 > 0)
         {
-            timer.text = GameManager.Instance.timerMushroomDN.ToString();
+            timer.text = (GameManager.Instance.timerMushroomDN + 1).ToString();
             //icon.gameObject.SetActive(true);
         }
         //else icon.gameObject.SetActive(false);

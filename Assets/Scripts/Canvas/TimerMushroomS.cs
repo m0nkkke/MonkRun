@@ -10,7 +10,7 @@ public class TimerMushroomS : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.Instance.timerMushroomS > 0)
-            timer.text = GameManager.Instance.timerMushroomS.ToString();
+        if (GameManager.Instance.timerMushroomS + 1 > 0)
+            timer.text = (GameManager.Instance.timerMushroomS + 1).ToString();
     }
 }

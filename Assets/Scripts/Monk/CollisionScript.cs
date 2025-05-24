@@ -92,7 +92,7 @@ public class CollisionScript : MonoBehaviour
         int originalSpeed = GameManager.Instance.roadSpeed;
         int speed = 6;
         diffSpeed = originalSpeed - speed;
-        int speedReductionDuration = 10;
+        int speedReductionDuration = 9;
         GameManager.Instance.timerMushroomS = speedReductionDuration + 1;
         GameManager.Instance.textTimerMushroomS.SetActive(true);
         GameManager.Instance.iconMushroomS.SetActive(true);
@@ -145,7 +145,7 @@ public class CollisionScript : MonoBehaviour
 
         GSM.MushroomDN.TransitionTo(1.5f);
 
-        int time = 10;
+        int time = 9;
         //int curTime = 0;
         GameManager.Instance.timerMushroomDN = time + 1;
         GameManager.Instance.textTimerMushroomDN.SetActive(true);
