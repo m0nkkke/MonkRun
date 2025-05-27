@@ -1628,6 +1628,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3450542528154480144, guid: 4103598897a6cc94286a4862fbca460f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 390.20007
+      objectReference: {fileID: 0}
     - target: {fileID: 3632139131032214178, guid: 4103598897a6cc94286a4862fbca460f, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -2221,7 +2225,7 @@ GameObject:
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1731085713
 Transform:
   m_ObjectHideFlags: 0
@@ -2244,12 +2248,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1731085711}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f8e020455cde1849aafcb3884995434, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roadLen: 15
+  roadLen: 7
   EmptyRoads:
   - {fileID: 1561360546929875918, guid: 9a48a4dd08c917c4ca2b99708d7619aa, type: 3}
   - {fileID: 6694697960898321529, guid: aad7115aa606e57418e3c50c780c8311, type: 3}
